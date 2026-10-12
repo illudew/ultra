@@ -49,7 +49,7 @@
 |---------|------|----------|
 | `home` | 总览仪表盘 | 统计指标、引导入口 |
 | `cognition` | 学习本质 | 认知循环四环节 + 认知检查表 |
-| `map` | 知识地图 | 5 层级 28 知识点的搜索/筛选/详情 |
+| `map` | 知识地图 | 5 层级 55 知识点的搜索/筛选/详情 + 可点击关联跳转 |
 | `learn` | 物理学习器 | 4 阶段主动学习（诊断→重构→解释→连接） |
 | `practice` | 做题训练 | 因果链选择题，即时反馈 |
 | `applications` | 物理应用 | 3 个可交互参数模拟器 |
@@ -193,7 +193,7 @@ const LEVELS = [
 
 5 元素字符串数组，按索引对应 LEVELS 的 id。
 
-#### `CONCEPTS` — 知识地图（28 个知识点）
+#### `CONCEPTS` — 知识地图（55 个知识点）
 
 每个知识点的 schema：
 
@@ -207,28 +207,33 @@ interface Concept {
   model:       string;    // 核心物理模型 / 公式
   detail:      string;    // 详细物理含义
   conditions:  string;    // 适用条件与注意事项
-  related:     string[];  // 关联知识点名称
+  related:     string[];  // 关联知识点名称（渲染为可点击的跳转按钮）
 }
 ```
+
+> 数据由两部分构成：`const CONCEPTS = [...]` 定义 29 个核心节点，随后通过 `CONCEPTS.push([...])` 追加 26 个扩展节点。全部 166 条 `related` 引用均指向真实存在的知识点，图谱完整闭合、无悬空链接。
+
+**层级分布**：层级一 6 · 层级二 25 · 层级三 11 · 层级四 6 · 层级五 7
 
 **学科分组统计**：
 
 | 分组 | 知识点数 |
 |------|---------|
-| 经典力学 | 5 |
-| 热学 | 1 |
-| 波动与光学 | 2 |
-| 电磁学 | 2 |
-| 数学基础 | 4 |
-| 理论力学 | 1 |
+| 经典力学 | 13 |
+| 数学基础 | 8 |
+| 电磁学 | 6 |
+| 波动与光学 | 5 |
+| 应用与工程 | 5 |
+| 基础方法 | 4 |
+| 理论力学 | 4 |
+| 热学 | 2 |
+| 相对论 | 2 |
 | 量子理论 | 1 |
 | 统计物理 | 1 |
-| 相对论 | 1 |
 | 凝聚态物理 | 1 |
-| 应用与工程 | 3 |
 | 材料科学 | 1 |
 | 实验方法 | 1 |
-| 能量守恒 / 动量 / 转动 / 万有引力（分散） | — |
+| 高能物理 | 1 |
 
 #### `LEARNING_STAGES` — 学习阶段
 
@@ -480,15 +485,18 @@ let selectedApplication; // 当前应用 id（默认 "pendulum"）
 - 层级筛选：`level === "all"` 或精确匹配
 - 学科筛选：`group === "all"` 或精确匹配
 
-结果显示 3 列 concept-grid，底部显示 `X / 28 个知识点`。
+结果显示 3 列 concept-grid，底部显示 `X / 55 个知识点`。
 
 #### `renderConceptDetail()`
 
 在右侧面板渲染选中知识点的完整详情，包括：层级标签、名称、摘要、核心模型（`.equation` 蓝色块）、物理含义、适用条件、相关知识标签、"学习该知识点"按钮。
 
+**相关知识链接**：每条 `related` 名称会通过 `CONCEPTS.find(item => item.name === name)` 反查目标节点，命中时渲染为带 `data-concept` 的 `<button class="relation-tag">`，点击即跳转到该知识点详情（复用 `renderConcepts()` 并平滑滚动）；若未命中则退化为纯文本 `<span>`。
+
 **交互**：
 - 点击层级卡片 → 自动设置层级筛选
 - 点击 concept-card → 更新 `selectedConceptId` 并重新渲染
+- 点击详情中的"相关知识"标签 → 跳转到关联知识点（`data-concept`）
 - 点击详情中的 "学习该知识点" → 切换到 learn 视图
 
 ---
@@ -739,6 +747,7 @@ document.addEventListener("click", event => {
 | 父容器 | 委托属性 | 处理逻辑 |
 |--------|----------|----------|
 | `#conceptGrid` | `[data-concept]` | 切换选中知识点 |
+| `#conceptDetail` | `[data-concept]` | 关联知识标签跳转 |
 | `#conceptDetail` | `[data-start-learning]` | 从详情跳到学习器 |
 | `#learnStage` | `[data-learn-next]` / `[data-learn-back]` / `[data-learn-finish]` | 学习阶段流转 |
 | `#practiceChoices` | `[data-practice-choice]` | 选项选择 + 判对 |
