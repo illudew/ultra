@@ -1,0 +1,2106 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#102846" />
+<meta name="description" content="物理认知引擎：以体验、预测、验证和修正构建物理模型的开放式学习工作台。" />
+<title>物理认知引擎 · 从现象到模型</title>
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<style>
+:root{--navy:#112b4a;--navy2:#183b61;--blue:#2768ad;--blue2:#eaf3ff;--green:#7bd65d;--green2:#edf9e8;--orange:#f0a353;--orange2:#fff4e6;--purple:#8b7bd8;--purple2:#f3f0ff;--ink:#1e3046;--muted:#7c8ca1;--line:#e4ebf3;--paper:#f5f8fc;--white:#fff;--shadow:0 16px 45px rgba(27,56,89,.07);--radius:18px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:14px}button,input,textarea,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #8bb9f0;outline-offset:2px}button:disabled{opacity:.45;cursor:not-allowed}.app{min-height:100vh;display:grid;grid-template-columns:252px minmax(0,1fr)}.sidebar{position:sticky;top:0;height:100vh;background:linear-gradient(175deg,#102744,#173c62);padding:25px 17px;color:white;display:flex;flex-direction:column;z-index:20;overflow:auto}.brand{display:flex;gap:12px;align-items:center;padding:3px 8px 26px}.brand-mark{width:42px;height:42px;border-radius:14px;background:var(--green);color:#16314d;display:grid;place-items:center;font-size:22px;font-weight:900;box-shadow:0 7px 20px #071d3628}.brand strong{display:block;font-size:16px;letter-spacing:.5px}.brand small{display:block;font-size:10px;color:#9cb2c9;margin-top:4px;letter-spacing:1.3px}.nav-label{font-size:10px;letter-spacing:1.7px;color:#7f9ab8;padding:7px 11px 9px}.nav{display:grid;gap:5px}.nav button{border:0;color:#c5d5e6;background:transparent;text-align:left;border-radius:12px;padding:12px 12px;display:flex;align-items:center;gap:11px;transition:.18s}.nav button:hover{background:#ffffff10;color:white}.nav button.active{background:#ffffff17;color:white;box-shadow:inset 3px 0 0 var(--green)}.nav .ni{display:grid;place-items:center;width:27px;height:27px;border-radius:9px;background:#ffffff0d;font-size:16px}.nav button.active .ni{background:var(--green);color:#173553}.side-foot{margin-top:auto;padding:15px 10px 0}.open-note{border:1px solid #ffffff1c;background:#ffffff0b;border-radius:13px;padding:14px}.open-note strong{font-size:11px;display:block}.open-note p{margin:7px 0 0;color:#a2b7cc;font-size:10px;line-height:1.7}.side-progress{height:5px;border-radius:10px;background:#ffffff1a;margin:12px 0 7px;overflow:hidden}.side-progress span{display:block;height:100%;background:var(--green);width:0;transition:width .3s}.side-stat{font-size:10px;color:#9eb6ce;display:flex;justify-content:space-between}.main{min-width:0}.topbar{height:74px;border-bottom:1px solid var(--line);background:#ffffffd9;backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:space-between;padding:0 32px;position:sticky;top:0;z-index:12;gap:18px}.crumb{display:flex;align-items:center;gap:10px;color:#8090a3;font-size:12px}.crumb b{color:var(--ink);font-size:13px}.top-actions{display:flex;align-items:center;gap:10px}.search{display:flex;align-items:center;gap:8px;background:#f3f7fb;border:1px solid #e6edf5;border-radius:11px;padding:9px 12px;width:min(310px,30vw)}.search span{color:#8496ab}.search input{border:0;background:transparent;outline:0;min-width:0;width:100%;color:var(--ink);font-size:12px}.icon-btn{border:1px solid var(--line);background:#fff;border-radius:10px;height:37px;min-width:38px;color:#7187a0}.mobile-toggle{display:none}.content{max-width:1450px;margin:0 auto;padding:30px 34px 60px}.view{display:none}.view.active{display:block;animation:enter .25s ease}@keyframes enter{from{opacity:.35;transform:translateY(5px)}to{opacity:1;transform:none}}.eyebrow{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#6f91b5;display:flex;align-items:center;gap:8px}.eyebrow:before{content:"";height:2px;width:18px;background:var(--green);border-radius:4px}.hero{position:relative;overflow:hidden;min-height:274px;border-radius:24px;background:radial-gradient(circle at 78% 12%,#2f5b81 0,transparent 34%),linear-gradient(117deg,#102946,#1b4874);color:white;padding:36px 38px;display:flex;align-items:center;justify-content:space-between;gap:20px;box-shadow:0 18px 42px #1b416322}.hero:after{content:"";position:absolute;width:310px;height:310px;right:6%;top:-85px;border:1px solid #ffffff14;border-radius:50%;box-shadow:0 0 0 35px #ffffff06,0 0 0 72px #ffffff04}.hero-copy{max-width:690px;position:relative;z-index:1}.hero .eyebrow{color:#a1c0df}.hero h1{font-size:clamp(28px,3vw,42px);line-height:1.2;letter-spacing:-1.3px;margin:18px 0 13px}.hero h1 em{font-style:normal;color:var(--green)}.hero p{max-width:640px;color:#c2d4e8;font-size:13px;line-height:1.95;margin:0}.hero-actions{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}.btn{border:0;border-radius:10px;padding:11px 15px;font-weight:700;font-size:12px;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .15s,box-shadow .15s}.btn:hover{transform:translateY(-1px)}.btn-primary{background:var(--green);color:#173451;box-shadow:0 8px 18px #101f2c24}.btn-light{color:#ecf5ff;background:#ffffff12;border:1px solid #ffffff2b}.btn-blue{background:var(--blue);color:white}.btn-outline{border:1px solid #dce6f0;background:#fff;color:#57718d}.btn-soft{background:#eff5fb;color:#557493}.btn-orange{background:var(--orange2);color:#a66828;border:1px solid #f4dfc5}.hero-visual{position:relative;z-index:1;width:230px;min-width:180px;aspect-ratio:1;display:grid;place-items:center}.orbit{position:absolute;border:1px solid #ffffff35;border-radius:50%;width:96%;height:96%;animation:orbit 28s linear infinite}.orbit:nth-child(2){width:70%;height:112%;transform:rotate(52deg);animation-direction:reverse}.orbit:nth-child(3){width:112%;height:56%;transform:rotate(-32deg)}.atom-core{width:65px;height:65px;border-radius:20px;background:linear-gradient(145deg,#a5ef7e,#6dc54f);color:#153753;display:grid;place-items:center;font-weight:900;font-size:26px;box-shadow:0 0 45px #a1ed7a42}@keyframes orbit{to{transform:rotate(360deg)}}.stat-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0 28px}.stat{padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:15px;display:flex;align-items:center;gap:13px}.stat-icon{width:39px;height:39px;border-radius:12px;background:var(--blue2);color:var(--blue);display:grid;place-items:center;font-size:18px;flex-shrink:0}.stat:nth-child(2) .stat-icon{background:var(--green2);color:#578d3c}.stat:nth-child(3) .stat-icon{background:var(--orange2);color:#bd7c36}.stat:nth-child(4) .stat-icon{background:var(--purple2);color:#7565b7}.stat label{display:block;color:#8a9aae;font-size:10px;margin-bottom:5px}.stat strong{font-size:22px;letter-spacing:-.7px}.stat small{font-size:10px;color:#95a3b3;margin-left:4px}.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:15px;margin:27px 0 14px}.section-head h2{font-size:19px;letter-spacing:-.4px;margin:0}.section-head p{font-size:11px;color:#8595a8;margin:7px 0 0;line-height:1.6}.link-btn{border:0;background:transparent;color:var(--blue);font-size:11px;font-weight:800;padding:6px}.module-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}.module-card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:19px;min-height:202px;text-align:left;position:relative;overflow:hidden;transition:.2s;display:flex;flex-direction:column}.module-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:#d0dfef}.mc-icon{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;font-size:20px;margin-bottom:18px;background:var(--blue2);color:var(--blue)}.module-card.green .mc-icon{background:var(--green2);color:#57923a}.module-card.orange .mc-icon{background:var(--orange2);color:#c57d2c}.module-card.purple .mc-icon{background:var(--purple2);color:#7765bc}.module-card h3{font-size:15px;margin:0 0 7px}.module-card p{font-size:11px;line-height:1.8;color:#73859a;margin:0;flex:1}.module-card small{font-size:10px;color:#a0adba;margin-top:13px}.card-arrow{position:absolute;right:16px;top:20px;color:#b4c3d3}.dashboard-bottom{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);gap:15px;margin-top:16px}.panel{background:white;border:1px solid var(--line);border-radius:17px;padding:21px;min-width:0}.panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:17px}.panel-head h3{font-size:14px;margin:0}.panel-head p{font-size:10px;color:#8a9bad;margin:6px 0 0;line-height:1.6}.pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:7px;background:#eff5fb;color:#64809d;font-size:10px;font-weight:700}.pill.green{background:var(--green2);color:#578d3b}.pill.orange{background:var(--orange2);color:#a86e32}.trail-list{display:grid}.trail-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #eef2f6}.trail-item:last-child{border-bottom:0}.trail-dot{width:34px;height:34px;border-radius:10px;background:#edf4fc;color:#4d7caf;display:grid;place-items:center;flex-shrink:0}.trail-item div:nth-child(2){min-width:0;flex:1}.trail-item strong{font-size:12px;display:block}.trail-item small{color:#8a9bae;font-size:10px;display:block;margin-top:5px}.mini-progress{height:5px;width:78px;background:#eef2f6;border-radius:5px;overflow:hidden}.mini-progress span{display:block;height:100%;background:#83ce63}.empty{padding:28px 10px;text-align:center;color:#96a5b5;font-size:11px;line-height:1.8}.review-box{border-radius:13px;border:1px solid #dbeccb;background:#f5fbee;padding:15px}.review-box h4{font-size:12px;margin:0 0 6px}.review-box p{font-size:11px;line-height:1.8;color:#718963;margin:0}.review-box .btn{margin-top:12px}.page-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin-bottom:22px}.page-heading h1{font-size:28px;letter-spacing:-1px;margin:10px 0 8px}.page-heading p{font-size:12px;line-height:1.8;color:#788a9e;margin:0;max-width:750px}.heading-side{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.map-tools{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:15px}.map-search{flex:1;min-width:220px;display:flex;align-items:center;border:1px solid var(--line);border-radius:10px;background:white;padding:10px 12px;gap:8px}.map-search input{border:0;outline:0;min-width:0;flex:1;font-size:12px}.select{border:1px solid var(--line);background:white;padding:10px 12px;border-radius:10px;color:#5d7792;font-size:11px}.map-layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(310px,.72fr);gap:15px;align-items:start}.graph-panel{padding:0;overflow:hidden}.graph-toolbar{padding:15px 17px;display:flex;justify-content:space-between;gap:10px;align-items:center;border-bottom:1px solid #edf1f5}.graph-toolbar strong{font-size:12px}.graph-toolbar small{display:block;font-size:10px;color:#8b9bad;margin-top:4px}.graph-wrap{height:550px;position:relative;background:radial-gradient(circle at 50% 50%,#fff 0,#f8fbff 100%)}#knowledge-graph{width:100%;height:100%;display:block;touch-action:pan-y}.graph-wrap svg text{font-family:inherit;pointer-events:none}.graph-note{display:flex;gap:10px;flex-wrap:wrap;padding:12px 17px;border-top:1px solid #edf1f5;color:#8594a5;font-size:10px}.legend-dot{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:5px}.detail-panel{position:sticky;top:92px}.node-level{display:inline-block;background:#eaf3ff;color:#4077b2;border-radius:7px;padding:5px 8px;font-size:10px;font-weight:800}.detail-panel h2{font-size:23px;letter-spacing:-.8px;margin:13px 0 9px}.detail-desc{font-size:12px;color:#6f8298;line-height:1.9;margin:0 0 15px}.formula-box{background:#f2f7fd;border:1px solid #e0ebf8;padding:14px;border-radius:12px;margin:12px 0 17px;overflow:auto}.formula-label{font-size:9px;font-weight:800;color:#7895b5;letter-spacing:1.4px;margin-bottom:10px}.formula-box .math{font-size:17px;color:#234a75}.detail-label{font-size:10px;color:#8c9cad;font-weight:800;letter-spacing:1px;margin:18px 0 9px}.bullet-list{margin:0;padding-left:18px;color:#5d748d;font-size:11px;line-height:1.9}.pills{display:flex;gap:6px;flex-wrap:wrap}.pills span{padding:6px 8px;border-radius:7px;border:1px solid #e5ecf4;background:#fbfdff;font-size:10px;color:#687f98}.relation-mini{display:grid;gap:7px}.relation-mini button{display:flex;align-items:center;justify-content:space-between;text-align:left;border:1px solid #e8eef5;background:white;border-radius:9px;padding:9px 10px;font-size:10px;color:#3e638b;gap:10px}.relation-mini span{font-size:9px;color:#91a0b0;white-space:nowrap}.progress-head{display:flex;justify-content:space-between;align-items:center;color:#8192a5;font-size:10px;margin-bottom:8px}.progress-head strong{font-size:13px;color:#417caf}.progress-track{height:7px;background:#edf2f7;border-radius:8px;overflow:hidden}.progress-track span{display:block;height:100%;background:linear-gradient(90deg,#77c856,#a4e57e);border-radius:8px;transition:width .25s}.fineprint{font-size:9px;color:#9aa8b8;line-height:1.6;margin-top:7px}.action-stack{display:grid;gap:8px;margin-top:17px}.action-stack .btn{width:100%}.levels-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin-bottom:15px}.level-card{border:1px solid var(--line);border-radius:12px;background:#fff;padding:12px 13px;min-width:0}.level-card strong{display:block;font-size:11px;margin-bottom:6px}.level-card small{font-size:9px;color:#91a0b1;line-height:1.5;display:block}.level-card .level-num{display:block;font-size:9px;color:#6993bf;margin-bottom:7px;font-weight:800;letter-spacing:1px}.level-card:nth-child(2) .level-num{color:#5b9a43}.level-card:nth-child(3) .level-num{color:#c8873f}.level-card:nth-child(4) .level-num{color:#8b7cc4}.level-card:nth-child(5) .level-num{color:#d57991}.learn-layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(290px,.8fr);gap:15px;align-items:start}.stepper{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:15px 0 20px}.step-chip{border:1px solid #e5ecf4;border-radius:10px;padding:11px 8px;background:white;text-align:left;color:#8a9bad}.step-chip strong{display:block;font-size:11px;margin-top:7px;color:#647c95}.step-chip small{font-size:9px}.step-chip .num{width:24px;height:24px;border-radius:7px;display:grid;place-items:center;background:#edf3f9;font-size:10px;font-weight:800}.step-chip.active{background:#f1f7ff;border-color:#afcfee}.step-chip.active .num,.step-chip.done .num{background:#2e6da9;color:white}.step-chip.done{border-color:#d6e9cd}.step-chip.done .num{background:#77be5b}.stage-title{font-size:19px;margin:0 0 8px;letter-spacing:-.4px}.stage-desc{font-size:11px;line-height:1.8;color:#8292a5;margin:0 0 17px}.question-box{padding:16px;border:1px solid #e2eaf4;background:#f7faff;border-radius:12px;margin:14px 0}.question-box small{font-size:9px;color:#7394b9;font-weight:800;letter-spacing:1px}.question-box p{font-size:13px;line-height:1.8;margin:9px 0 0;color:#2d4967}.choice-list{display:grid;gap:8px;margin:12px 0}.choice{width:100%;border:1px solid #e0e8f1;border-radius:10px;background:white;text-align:left;display:flex;align-items:flex-start;gap:10px;padding:11px 12px;color:#5b7188;font-size:11px;line-height:1.7}.choice:hover{border-color:#b6cde5;background:#f8fbff}.choice.selected{border-color:#76a8d9;background:#f1f7ff;color:#315c88}.choice.correct{border-color:#aed698;background:#f3faee}.choice .choice-mark{height:21px;width:21px;border-radius:7px;border:1px solid #dfe7f0;display:grid;place-items:center;flex-shrink:0;color:#7191b4;font-size:10px}.choice.selected .choice-mark{background:#2f70af;color:white;border-color:#2f70af}.choice.correct .choice-mark{background:#79bd5e;color:white;border-color:#79bd5e}.form-label{display:block;font-size:10px;color:#8192a6;font-weight:800;margin:14px 0 7px}.field,.textarea{display:block;width:100%;border:1px solid #dfe8f1;border-radius:10px;padding:11px 12px;background:#fff;color:#29435e;font-size:12px;outline:0}.textarea{min-height:105px;resize:vertical;line-height:1.75}.field:focus,.textarea:focus{border-color:#8db4df;box-shadow:0 0 0 3px #eaf3ff}.stage-actions{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-top:16px}.stage-actions .btn{flex:0 0 auto}.sketch-wrap{border:1px solid #e2eaf4;border-radius:12px;overflow:hidden;background:white;margin-top:12px}.sketch-head{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#f7faff;border-bottom:1px solid #e7eef5;padding:9px 12px}.sketch-head strong{font-size:10px}.sketch-head button{border:0;background:transparent;color:#6e87a0;font-size:10px}.sketch{display:block;touch-action:none;width:100%;height:185px;background-image:linear-gradient(#edf2f800 24px,#e9f0f6 25px),linear-gradient(90deg,#edf2f800 24px,#e9f0f6 25px);background-size:25px 25px;background-color:#fff;cursor:crosshair}.ai-reply{border-left:3px solid var(--orange);background:#fff7ee;color:#886238;padding:13px;border-radius:0 10px 10px 0;font-size:11px;line-height:1.8;margin:12px 0}.two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.subpanel{border:1px solid #e3ebf4;border-radius:12px;padding:14px;min-width:0}.subpanel h4{font-size:12px;margin:0 0 8px}.subpanel p{font-size:11px;line-height:1.8;color:#74869b;margin:0}.tag-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}.tag{font-size:9px;border:1px solid #e1eaf3;border-radius:7px;padding:5px 7px;color:#71879e}.practice-layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(270px,.8fr);gap:15px;align-items:start}.practice-topline{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:15px}.practice-topline h2{font-size:18px;margin:0}.question-big{font-size:15px;line-height:1.9;color:#294560;margin:14px 0 19px}.logic-box{border:1px solid #dce8f6;border-radius:12px;background:#f4f9ff;padding:15px;margin-bottom:15px}.logic-box strong{font-size:11px;color:#446f9e}.logic-box p{font-size:11px;line-height:1.8;color:#71879e;margin:7px 0 0}.feedback{padding:13px;border-radius:10px;font-size:11px;line-height:1.8;margin-top:12px}.feedback.good{background:#f0f9e9;border:1px solid #d9eccc;color:#557c3d}.feedback.warn{background:#fff7ea;border:1px solid #f3e1c6;color:#9d713d}.practice-index{font-size:10px;color:#90a0b2}.app-layout{display:grid;grid-template-columns:265px minmax(0,1fr);gap:15px;align-items:start}.app-list{display:grid;gap:6px}.app-item{border:1px solid transparent;background:white;text-align:left;border-radius:11px;padding:12px;display:flex;gap:10px;align-items:center}.app-item.active{border-color:#c8def2;background:#f1f7ff}.app-item .app-symbol{width:34px;height:34px;border-radius:10px;background:#eaf3ff;color:#3b76b6;display:grid;place-items:center;flex-shrink:0;font-size:16px}.app-item strong{font-size:11px;display:block}.app-item small{font-size:9px;color:#8a9bae;display:block;margin-top:5px}.range-item{padding:13px 0;border-bottom:1px solid #edf1f5}.range-head{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:11px;color:#7589a0}.range-head strong{color:#2e5f90;font-size:12px}.range-item input[type=range]{width:100%;accent-color:#367ab8;margin-top:13px}.range-bound{display:flex;justify-content:space-between;color:#a1adba;font-size:9px;margin-top:3px}.metric-card{border:1px solid #dce9f7;background:linear-gradient(135deg,#f7fbff,#eef6ff);border-radius:14px;padding:18px;margin:15px 0}.metric-card small{display:block;font-size:9px;color:#7e97b3;letter-spacing:1px;font-weight:800}.metric-card strong{font-size:34px;display:block;color:#245a91;letter-spacing:-1.5px;margin:8px 0}.metric-card p{font-size:10px;line-height:1.7;color:#738ba5;margin:0}.plot{width:100%;height:auto;border:1px solid #e8eef5;border-radius:10px;background:#fcfdff}.research-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.72fr);gap:15px;align-items:start}.topic-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.topic-card{border:1px solid #e2eaf4;background:white;border-radius:12px;padding:13px;text-align:left}.topic-card.active{border-color:#a4c8eb;background:#f3f8ff}.topic-card small{font-size:9px;color:#83a0be;font-weight:800}.topic-card strong{font-size:12px;display:block;margin:7px 0}.topic-card p{font-size:10px;line-height:1.7;color:#8595a7;margin:0}.research-step{display:flex;gap:11px;padding:13px 0;border-bottom:1px solid #edf1f5}.research-step:last-child{border-bottom:0}.research-step .step-n{height:26px;width:26px;border-radius:8px;background:#edf4fc;color:#4e7dab;display:grid;place-items:center;flex-shrink:0;font-size:10px;font-weight:800}.research-step strong{font-size:11px;display:block}.research-step p{font-size:10px;line-height:1.7;color:#8091a4;margin:5px 0 0}.timeline{border-left:2px solid #e2ebf5;margin:12px 0 5px 6px;padding-left:17px;display:grid;gap:16px}.timeline-item{position:relative}.timeline-item:before{content:"";position:absolute;left:-23px;top:4px;width:9px;height:9px;border-radius:50%;background:#81b2e1;border:2px solid white;box-shadow:0 0 0 1px #b8d0e8}.timeline-item small{font-size:9px;color:#7194b8;font-weight:800}.timeline-item strong{display:block;font-size:11px;margin:5px 0}.timeline-item p{font-size:10px;color:#8292a3;line-height:1.7;margin:0}.toast{position:fixed;bottom:20px;right:22px;z-index:50;background:#143454;color:white;border-radius:11px;padding:13px 16px;box-shadow:0 10px 40px #0c27412c;max-width:min(440px,calc(100vw - 28px));font-size:11px;line-height:1.7;animation:enter .2s ease}.footer-note{color:#96a5b4;text-align:center;font-size:10px;line-height:1.8;margin-top:30px}.setting-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.setting-grid label{display:block;font-size:11px;color:#637a93;margin-bottom:7px}.badge{display:inline-block;background:#edf7e8;color:#61924a;border-radius:6px;padding:4px 7px;font-size:9px;font-weight:800}
+@media(max-width:1150px){.app{grid-template-columns:220px minmax(0,1fr)}.sidebar{padding:20px 12px}.content{padding:25px 22px 45px}.hero-visual{width:190px}.module-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.map-layout{grid-template-columns:minmax(0,1.2fr) minmax(285px,.8fr)}.graph-wrap{height:490px}.stat strong{font-size:20px}}
+@media(max-width:850px){.app{display:block}.sidebar{position:fixed;left:0;top:0;bottom:0;width:260px;height:100dvh;transform:translateX(-105%);transition:transform .22s;box-shadow:15px 0 45px #0e27452c}.sidebar.open{transform:translateX(0)}.mobile-toggle{display:inline-flex}.topbar{height:65px;padding:0 15px}.content{padding:19px 14px 40px}.hero{padding:27px;min-height:0}.hero-visual{width:130px;min-width:110px}.hero h1{font-size:29px}.stat-strip{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.stat{padding:12px}.dashboard-bottom,.learn-layout,.practice-layout,.research-layout,.map-layout{grid-template-columns:1fr}.detail-panel{position:static}.graph-wrap{height:450px}.levels-row{grid-template-columns:repeat(5,145px);overflow-x:auto;padding-bottom:5px}.page-heading h1{font-size:25px}.search{width:min(250px,44vw)}}
+@media(max-width:520px){.topbar{gap:8px}.crumb{font-size:10px}.crumb b{font-size:11px}.search{width:38vw;padding:8px}.search input{font-size:10px}.icon-btn{min-width:33px;height:34px}.hero{padding:23px 20px}.hero-visual{display:none}.hero h1{font-size:28px}.hero p{font-size:12px}.module-grid{gap:8px}.module-card{padding:14px;min-height:190px}.module-card h3{font-size:13px}.module-card p{font-size:10px}.mc-icon{width:35px;height:35px;margin-bottom:14px}.stat{gap:8px}.stat-icon{width:32px;height:32px}.stat label{font-size:9px}.stat strong{font-size:18px}.stat small{display:none}.panel{padding:15px}.graph-wrap{height:400px}.two-col,.setting-grid{grid-template-columns:1fr}.stepper{gap:4px}.step-chip{padding:8px 5px}.step-chip strong{font-size:9px}.step-chip small{font-size:8px}.step-chip .num{height:20px;width:20px}.topic-grid{gap:6px}.topic-card{padding:10px}.topic-card p{font-size:9px}.stage-actions .btn{flex:1}.page-heading{display:block}.heading-side{margin-top:14px}.heading-side .btn{font-size:10px}.hero-actions .btn{font-size:11px}.relation-mini button{align-items:flex-start}.formula-box .math{font-size:14px}}
+ 
+/* Learning mechanism workspace */
+.cognition-promo{display:flex;align-items:center;gap:17px;margin:2px 0 20px;padding:19px 22px;border-radius:17px;border:1px solid #dce9e9;background:linear-gradient(105deg,#eff9f7,#f5f8fc 68%,#fff7ec)}.promo-orbit{width:49px;height:49px;flex-shrink:0;display:grid;place-items:center;border-radius:16px;background:#d9f2ee;color:#278b87;font-size:29px}.cognition-promo>div:nth-child(2){flex:1}.cognition-promo .eyebrow{font-size:9px;letter-spacing:1.3px}.cognition-promo h3{font-size:15px;margin:5px 0 5px}.cognition-promo p{font-size:11px;line-height:1.7;color:#708598;margin:0;max-width:880px}.cognition-principle{display:flex;align-items:flex-start;gap:13px;padding:16px 19px;border:1px solid #d9e8f5;background:#eef6ff;border-radius:15px;margin-bottom:17px}.principle-mark{width:35px;height:35px;border-radius:11px;display:grid;place-items:center;background:#d4e9ff;color:#205c98;font-size:20px;font-weight:800;flex-shrink:0}.cognition-principle strong{font-size:12px}.cognition-principle p{font-size:11px;line-height:1.8;color:#607991;margin:5px 0 0}.cognition-layout{display:grid;grid-template-columns:minmax(0,1.17fr) minmax(330px,.83fr);gap:15px;align-items:start}.cognition-visual-panel{padding:17px}.cognition-map-wrap{width:100%;overflow:hidden;border-radius:14px;background:radial-gradient(circle at 50% 50%,#f5fbff 0,#fff 55%)}#cognition-map{display:block;width:100%;height:auto;max-height:635px}#cognition-map .cog-axis{stroke:#b9c6d5;stroke-width:1.1;stroke-dasharray:4 5}#cognition-map .cog-curve{fill:none;stroke-width:4;stroke-linecap:round;opacity:.87}#cognition-map .cog-curve.teal{stroke:#42b8b1}#cognition-map .cog-curve.red{stroke:#df8993}#cognition-map .cog-curve.green{stroke:#79c779}#cognition-map .cog-curve.yellow{stroke:#d5c94b}#cognition-map .cog-loop{fill:none;stroke:#51606b;stroke-width:3.1;opacity:.55;stroke-linecap:round}#cognition-map .cog-inner-loop{fill:none;stroke:#9aabba;stroke-width:1.4;stroke-dasharray:3 4}#cognition-map .cog-axis-label{fill:#91a0ae;font-size:10px;text-anchor:middle}#cognition-map .cog-node,#cognition-map .cog-anchor,#cognition-map .cog-core{cursor:pointer;outline:none}#cognition-map .cog-node circle,#cognition-map .cog-anchor circle{stroke:#31495d;stroke-width:1.5;fill:#fff;transition:transform .16s,stroke-width .16s,filter .16s}#cognition-map .cog-node text,#cognition-map .cog-anchor text{fill:#26394d;font-size:15px;font-weight:750;text-anchor:middle;pointer-events:none}#cognition-map .cog-node.teal circle{fill:#dcf6f2}#cognition-map .cog-node.yellow circle{fill:#fff9cb}#cognition-map .cog-node.red circle{fill:#ffe1e4}#cognition-map .cog-node.green circle{fill:#e1f8dd}#cognition-map .cog-anchor circle{fill:#dff4f8}#cognition-map [data-cognition].selected circle,#cognition-map [data-cognition]:focus-visible circle{stroke:#1f5f9a;stroke-width:3.5;filter:drop-shadow(0 3px 5px #2f6e9b2d)}#cognition-map [data-cognition]:hover circle{transform:scale(1.06)}#cognition-map .cog-core rect{fill:#fff;stroke:#536c7e;stroke-width:2.4}#cognition-map .cog-core text{fill:#203951;font-size:15px;font-weight:850;text-anchor:middle}#cognition-map .cog-core path{stroke:#d0dce5;stroke-width:1.3}.cog-timebar{display:grid;grid-template-columns:1fr repeat(3,minmax(75px,1fr));gap:7px;margin-top:12px;align-items:stretch}.cog-time-intro{display:flex;flex-direction:column;justify-content:center;padding:8px 4px}.cog-time-intro strong{font-size:11px}.cog-time-intro small{font-size:9px;color:#92a0b1;margin-top:4px}.cog-time{border:1px solid #e4ebf1;border-radius:10px;background:#fff;padding:9px 8px;text-align:center;color:#3c536b}.cog-time strong,.cog-time small{display:block}.cog-time strong{font-size:11px}.cog-time small{font-size:9px;color:#8a9aac;margin-top:4px}.cog-time.active{border-color:#6aaea9;background:#edf9f7;box-shadow:inset 0 0 0 1px #c1e4df}.cog-path-note{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;color:#8090a2;font-size:9px;line-height:1.7;padding-top:12px}.path-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-left:4px}.teal-dot{background:#42b8b1}.red-dot{background:#df8993}.green-dot{background:#79c779}.yellow-dot{background:#d5c94b}.cognition-workbench{position:sticky;top:91px;min-height:530px}.cog-node-kicker{display:flex;justify-content:space-between;align-items:center;gap:10px}.cog-node-icon{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-size:18px;background:#e4f5f3;color:#288985}.cog-work-title{font-size:23px;letter-spacing:-.6px;margin:13px 0 8px}.cog-work-description{color:#71859b;font-size:12px;line-height:1.8}.cog-question{background:#f4f8fc;border:1px solid #e4edf5;border-radius:12px;padding:14px;margin:15px 0}.cog-question strong{display:block;font-size:12px;line-height:1.65}.cog-question p{font-size:11px;line-height:1.75;color:#6e8297;margin:8px 0 0}.cog-task-label{font-size:10px;color:#8294a9;font-weight:800;display:block;margin:13px 0 7px}.cog-textarea{width:100%;min-height:132px;resize:vertical;border:1px solid #dfe8f1;border-radius:11px;padding:12px;background:#fff;color:#2a4057;font-size:12px;line-height:1.8}.cog-textarea:focus{outline:3px solid #d9edff;border-color:#8fb9df}.cog-sentence{font-size:10px;line-height:1.7;color:#8b9aab;margin:7px 0 0}.cog-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.cog-actions .btn{flex:1}.cog-status{display:flex;align-items:center;gap:8px;font-size:10px;color:#8797a8;margin-top:12px}.cog-status .status-dot{width:7px;height:7px;background:#c6d0da;border-radius:50%}.cog-status.done .status-dot{background:#68b963}.cog-done-note{background:#f0f9ed;border:1px solid #d5edce;color:#4e7e40;padding:11px 12px;border-radius:10px;font-size:10px;line-height:1.7;margin-top:12px}.cog-summary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.cog-summary-grid .panel{padding:17px}.cog-summary-grid small{font-size:10px;color:#8192a6;display:block}.cog-summary-grid strong{font-size:21px;display:block;margin:9px 0 7px;color:#244e76}.cog-summary-grid p{font-size:10px;line-height:1.7;color:#8696a7;margin:0}.cog-steps-list{display:grid;gap:5px;margin-top:13px}.cog-step-row{display:flex;align-items:center;gap:9px;border:1px solid #ecf0f4;border-radius:9px;padding:9px 10px;background:#fff;text-align:left;width:100%}.cog-step-row.active{border-color:#a9d6d2;background:#f0faf8}.cog-step-row.done .cog-step-index{background:#dff4d9;color:#4b8737}.cog-step-index{display:grid;place-items:center;width:25px;height:25px;border-radius:8px;background:#eff4f9;color:#6e87a1;font-size:10px;flex-shrink:0}.cog-step-row strong{font-size:10px;font-weight:700}.cog-step-row small{display:block;color:#97a5b5;font-size:9px;margin-top:3px}.cognition-workbench .subpanel{margin-top:15px}
+#cognition-map .cog-core.selected rect,#cognition-map .cog-core:focus-visible rect{stroke:#1f5f9a;stroke-width:3.7;filter:drop-shadow(0 3px 5px #2f6e9b2d)}#cognition-map .cog-node.completed circle,#cognition-map .cog-anchor.completed circle{stroke:#62ae57;stroke-width:3}#cognition-map .cog-core.completed rect{stroke:#62ae57;stroke-width:3.5}
+@media(max-width:1100px){.cognition-layout{grid-template-columns:minmax(0,1fr)}.cognition-workbench{position:static;min-height:0}.cog-summary-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:620px){.cognition-promo{align-items:flex-start;flex-wrap:wrap;padding:15px}.cognition-promo .btn{width:100%}.cognition-layout{gap:11px}.cognition-visual-panel{padding:10px}.cog-timebar{grid-template-columns:1fr repeat(3,minmax(65px,1fr));gap:4px}.cog-time{padding:8px 4px}.cog-time-intro strong{font-size:10px}.cog-time-intro small{font-size:8px}.cog-summary-grid{grid-template-columns:1fr}.cog-summary-grid .panel{padding:14px}.cog-work-title{font-size:21px}}
+ 
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar" id="sidebar">
+ <div class="brand"><div class="brand-mark">Φ</div><div><strong>物理认知引擎</strong><small>PHYSICS COGNITION ENGINE</small></div></div>
+ <div class="nav-label">工作台 / WORKSPACE</div>
+ <nav class="nav" id="navigation">
+   <button class="active" data-view="home"><span class="ni">⌂</span>总览</button>
+   <button data-view="cognition"><span class="ni">⟳</span>学习的本质</button>
+   <button data-view="map"><span class="ni">⌘</span>知识地图</button>
+   <button data-view="learn"><span class="ni">◫</span>物理学习器</button>
+   <button data-view="practice"><span class="ni">◎</span>物理做题器</button>
+   <button data-view="applications"><span class="ni">ϟ</span>物理应用器</button>
+   <button data-view="research"><span class="ni">⚗</span>物理科研器</button>
+   <button data-view="settings"><span class="ni">⚙</span>设置与数据</button>
+ </nav>
+ <div class="side-foot"><div class="open-note"><strong>开放知识地图 · 不设关卡</strong><p>先建立模型，再用预测和证据修正它。每个知识节点都可以直接进入。</p><div class="side-progress"><span id="sideProgress"></span></div><div class="side-stat"><span>模型闭环记录</span><b id="sideStat">0%</b></div></div></div>
+</aside>
+<main class="main">
+<header class="topbar"><div class="crumb"><button class="icon-btn mobile-toggle" id="mobileToggle" aria-label="打开菜单">☰</button><span>认知工作台</span><span>／</span><b id="crumbTitle">总览</b></div><div class="top-actions"><label class="search"><span>⌕</span><input id="globalSearch" placeholder="搜索知识点…" autocomplete="off" /><kbd style="font-size:9px;color:#96a4b4">/</kbd></label><button class="icon-btn" id="soundToggle" title="切换完成音效">♫</button><button class="icon-btn" id="settingsShortcut" title="设置">⚙</button></div></header>
+<div class="content">
+<section class="view active" id="view-home">
+ <div class="hero"><div class="hero-copy"><div class="eyebrow">EXPERIENCE · PREDICT · VERIFY · REVISE</div><h1>从现象出发，<br/><em>建立你的物理模型。</em></h1><p>从 12 岁的数感与运动直觉，到量子力学、半导体物理与开放科研问题。知识地图始终开放；学习、做题、应用与科研共享同一套模型网络。</p><div class="hero-actions"><button class="btn btn-primary" data-go="map">探索知识地图 <span>↗</span></button><button class="btn btn-light" data-go="learn">继续建立模型 →</button></div></div><div class="hero-visual" aria-hidden="true"><div class="orbit"></div><div class="orbit"></div><div class="orbit"></div><div class="atom-core">Φ</div></div></div>
+ <div class="stat-strip"><div class="stat"><div class="stat-icon">⌘</div><div><label>开放知识节点</label><strong id="statNodes">48</strong><small>个主题</small></div></div><div class="stat"><div class="stat-icon">◌</div><div><label>模型完整度</label><strong id="statProgress">0%</strong><small>过程记录</small></div></div><div class="stat"><div class="stat-icon">↔</div><div><label>因果链清晰度</label><strong id="statCausal">0%</strong><small>自建连接</small></div></div><div class="stat"><div class="stat-icon">↻</div><div><label>学习轨迹</label><strong id="statTrail">0</strong><small>次操作</small></div></div></div>
+ <div class="section-head"><div><h2>四大认知模块</h2><p>同一张知识图谱，四种不同的使用方式。</p></div><span class="pill green">无分数 · 无排名 · 无计时</span></div>
+ <div class="module-grid"><button class="module-card" data-go="learn"><span class="card-arrow">↗</span><div class="mc-icon">◫</div><h3>学习器</h3><p>诊断、遮蔽重构、费曼解释，再把知识连接成因果网络。</p><small>建立脑内模型</small></button><button class="module-card green" data-go="practice"><span class="card-arrow">↗</span><div class="mc-icon">◎</div><h3>做题器</h3><p>先判断本题的因果链，再选择规律与推导路径。</p><small>检验模型偏差</small></button><button class="module-card orange" data-go="applications"><span class="card-arrow">↗</span><div class="mc-icon">ϟ</div><h3>应用器</h3><p>把变量、边界条件与公式带入真实情境，做敏感性分析。</p><small>把模型迁移到现实</small></button><button class="module-card purple" data-go="research"><span class="card-arrow">↗</span><div class="mc-icon">⚗</div><h3>科研器</h3><p>从现象中提出自己的问题，用证据挑战假设和边界。</p><small>创造新的模型</small></button></div>
+ <div class="cognition-promo"><div class="promo-orbit">⟳</div><div><span class="eyebrow">THE MECHANISM OF LEARNING</span><h3>不只记住结论，还要让模型经历完整循环</h3><p>从经验和认知出发，经由试错、反馈、练习与应用，再通过复习和沉淀形成可迁移的理解。每一步都能实际记录。</p></div><button class="btn btn-primary" data-go="cognition">进入学习机制工作台 ↗</button></div>
+ <div class="dashboard-bottom"><div class="panel"><div class="panel-head"><div><h3>最近的认知轨迹</h3><p>记录你访问、解释和连接过的知识点。</p></div><button class="link-btn" data-go="map">打开知识地图 →</button></div><div id="trailList" class="trail-list"><div class="empty">还没有轨迹记录。选择一个知识点，开始建立第一个模型。</div></div></div><div class="panel"><div class="panel-head"><div><h3>间隔提取</h3><p>应用场景在几天后重新出现，检验模型是否能迁移。</p></div><span class="pill orange">+3 天</span></div><div id="reviewBox" class="review-box"><h4>还没有待复提取的应用</h4><p>在应用器完成一个场景后，系统会把同类情境加入本地提醒。</p><button class="btn btn-outline" data-go="applications">选择一个应用场景 ↗</button></div><div style="margin-top:15px" class="subpanel"><h4>这一引擎如何工作</h4><p>体验现象 → 预测结果 → 说明原因 → 观察证据 → 修正模型。进度只反映你完成了哪些认知操作，不代表客观能力排名。</p></div></div></div>
+</section>
+<section class="view" id="view-cognition">
+ <div class="page-heading"><div><div class="eyebrow">THE MECHANISM OF LEARNING</div><h1>学习的本质：让脑内模型不断更新</h1><p>这张交互图把“经验—认知—试错—反馈—练习—应用—复习—沉淀—升维”变成可执行的学习工作流。节点可自由选择，不是必须按顺序通过的关卡；每次记录都与具体知识点绑定。</p></div><div class="heading-side"><span class="pill green">体验 · 预测 · 验证 · 修正</span></div></div>
+ <div class="cognition-principle"><div class="principle-mark">Φ</div><div><strong>设计原则</strong><p>不是机械重复，而是反复调用模型、检验边界、用反馈修正，再把模型迁移到新情境。图示是一种学习工作流框架，不是对大脑神经活动的逐项解剖。</p></div></div>
+ <div class="cognition-layout">
+   <div class="panel cognition-visual-panel">
+     <div class="panel-head"><div><h3>学习循环图</h3><p>点击任意圆点，打开对应的可执行任务。虚线表示时间维度，彩色曲线表示彼此交织的学习过程。</p></div><span class="pill" id="cogDonePill">本知识点：0 / 12</span></div>
+     <div class="cognition-map-wrap">
+       <svg id="cognition-map" viewBox="0 0 760 600" role="img" aria-label="可交互学习机制图">
+         <defs>
+           <marker id="cogArrowTeal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#38a7a4"/></marker>
+           <marker id="cogArrowYellow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c6b93f"/></marker>
+           <marker id="cogArrowRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d96f7e"/></marker>
+           <marker id="cogArrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#67bb67"/></marker>
+         </defs>
+         <line x1="380" y1="55" x2="380" y2="550" class="cog-axis"/><line x1="65" y1="300" x2="695" y2="300" class="cog-axis"/>
+         <path d="M300 208 C240 155 260 90 340 84 C423 76 480 117 480 195" class="cog-curve teal" marker-end="url(#cogArrowTeal)"/>
+         <path d="M490 200 C570 205 620 244 622 292 C622 342 593 372 545 389" class="cog-curve red" marker-end="url(#cogArrowRed)"/>
+         <path d="M542 414 C514 490 472 516 408 516 C348 516 305 487 286 419" class="cog-curve green" marker-end="url(#cogArrowGreen)"/>
+         <path d="M245 390 C170 365 155 318 175 275 C188 247 212 228 246 217" class="cog-curve yellow" marker-end="url(#cogArrowYellow)"/>
+         <path d="M296 252 C330 204 402 205 443 251 C475 290 457 342 419 362 C379 383 326 365 306 329" class="cog-loop"/>
+         <path d="M311 292 C330 265 353 249 379 245 C415 252 439 276 446 305 C438 337 415 353 381 357 C350 352 326 333 311 306" class="cog-inner-loop"/>
+         <g class="cog-anchor" data-cognition="up" role="button" tabindex="0" aria-label="升维"><circle cx="380" cy="42" r="30"/><text x="380" y="47">升维</text></g>
+         <g class="cog-anchor" data-cognition="memory" role="button" tabindex="0" aria-label="记忆"><circle cx="74" cy="300" r="31"/><text x="74" y="305">记忆</text></g>
+         <g class="cog-anchor" data-cognition="understand" role="button" tabindex="0" aria-label="理解"><circle cx="686" cy="300" r="31"/><text x="686" y="305">理解</text></g>
+         <g class="cog-anchor" data-cognition="settle" role="button" tabindex="0" aria-label="沉淀"><circle cx="380" cy="562" r="30"/><text x="380" y="567">沉淀</text></g>
+         <g class="cog-node teal" data-cognition="experience" role="button" tabindex="0" aria-label="经验"><circle cx="282" cy="169" r="30"/><text x="282" y="174">经验</text></g>
+         <g class="cog-node teal" data-cognition="cognition" role="button" tabindex="0" aria-label="认知"><circle cx="478" cy="169" r="30"/><text x="478" y="174">认知</text></g>
+         <g class="cog-node yellow" data-cognition="review" role="button" tabindex="0" aria-label="复习"><circle cx="214" cy="230" r="30"/><text x="214" y="235">复习</text></g>
+         <g class="cog-node red" data-cognition="trial" role="button" tabindex="0" aria-label="试错"><circle cx="546" cy="230" r="30"/><text x="546" y="235">试错</text></g>
+         <g class="cog-node yellow" data-cognition="application" role="button" tabindex="0" aria-label="应用"><circle cx="214" cy="376" r="30"/><text x="214" y="381">应用</text></g>
+         <g class="cog-node red" data-cognition="feedback" role="button" tabindex="0" aria-label="反馈"><circle cx="546" cy="376" r="30"/><text x="546" y="381">反馈</text></g>
+         <g class="cog-node green" data-cognition="skill" role="button" tabindex="0" aria-label="技能"><circle cx="282" cy="430" r="30"/><text x="282" y="435">技能</text></g>
+         <g class="cog-node green" data-cognition="practice" role="button" tabindex="0" aria-label="练习"><circle cx="478" cy="430" r="30"/><text x="478" y="435">练习</text></g>
+         <g class="cog-core" data-cognition="learn" role="button" tabindex="0" aria-label="学会与习得"><rect x="306" y="272" width="148" height="57" rx="27"/><text x="344" y="306">学会</text><text x="416" y="306">习得</text><path d="M354 287 L354 314 M406 287 L406 314"/></g>
+         <text x="400" y="20" class="cog-axis-label">未来：升维迁移</text><text x="400" y="596" class="cog-axis-label">长期：沉淀成稳定结构</text>
+         <text x="80" y="337" class="cog-axis-label">可提取</text><text x="665" y="337" class="cog-axis-label">可解释</text>
+       </svg>
+     </div>
+     <div class="cog-timebar"><div class="cog-time-intro"><strong>时间维度</strong><small>过去—现在—未来</small></div><button class="cog-time active" data-cog-time="现在"><strong>现在</strong><small>活学活用</small></button><button class="cog-time" data-cog-time="过去"><strong>过去</strong><small>温故知新</small></button><button class="cog-time" data-cog-time="未来"><strong>未来</strong><small>未雨绸缪</small></button></div>
+     <div class="cog-path-note"><span class="path-dot teal-dot"></span>经验与认知 <span class="path-dot red-dot"></span>试错与反馈 <span class="path-dot green-dot"></span>练习与技能 <span class="path-dot yellow-dot"></span>复习与应用。环节相互重叠，不代表严格线性阶段。</div>
+   </div>
+   <aside class="panel cognition-workbench" id="cognitionWorkbench"><div class="empty">选择一个循环节点，开始一项认知操作。</div></aside>
+ </div>
+ <div class="section-head"><div><h2>把一轮学习变成可检查的模型</h2><p>系统只追踪你是否调用了模型、指出条件、获得反馈并完成迁移；不计分、不排名、不计时。</p></div><span class="pill green">与知识地图共用数据</span></div>
+ <div class="cog-summary-grid"><div class="panel"><small>本知识点的模型完整度</small><strong id="cogModelCompleteness">尚未记录</strong><p>由经验/认知、提取、练习、应用、反馈和沉淀等环节的覆盖情况汇总，不是考试分数。</p></div><div class="panel"><small>因果链清晰度</small><strong id="cogCausalClarity">尚未记录</strong><p>关注你是否写出了变量、机制、适用条件，以及预测与证据之间的关系。</p></div><div class="panel"><small>最近一次修正</small><strong id="cogLastUpdate">尚未记录</strong><p id="cogLastUpdateText">写下预测与反馈之间的差异，记录模型如何变化。</p></div></div>
+</section>
+<section class="view" id="view-map">
+ <div class="page-heading"><div><div class="eyebrow">OPEN KNOWLEDGE GRAPH</div><h1>知识地图</h1><p>五个知识层级只是组织视图，不是解锁顺序。你可以从任意节点开始，再沿先修、推导、等价、特例、对比、互补与应用关系自由探索。</p></div><div class="heading-side"><span class="pill green">全部节点开放</span></div></div>
+ <div class="levels-row" id="levelsRow"></div>
+ <div class="map-tools"><label class="map-search"><span style="color:#8da0b3">⌕</span><input id="mapSearch" placeholder="按知识点、学科或描述搜索…" /></label><select class="select" id="groupFilter"><option value="all">全部学科</option></select><select class="select" id="levelFilter"><option value="all">全部层级</option><option value="1">层级一</option><option value="2">层级二</option><option value="3">层级三</option><option value="4">层级四</option><option value="5">层级五</option></select><button class="btn btn-outline" id="resetGraph">重置视图</button></div>
+ <div class="map-layout"><div class="panel graph-panel"><div class="graph-toolbar"><div><strong>知识关系网络</strong><small>拖动节点调整布局 · 点击节点查看概念和连接</small></div><span class="pill" id="graphCount">48 个节点</span></div><div class="graph-wrap"><svg id="knowledge-graph" role="img" aria-label="可交互的物理知识关系图"></svg></div><div class="graph-note"><span><i class="legend-dot" style="background:#4e8fc9"></i>基础与数学</span><span><i class="legend-dot" style="background:#77b85a"></i>经典物理</span><span><i class="legend-dot" style="background:#d99a4b"></i>理论与微观</span><span><i class="legend-dot" style="background:#9983d4"></i>材料与工程</span><span>实线表示已知关系；可在详情面板添加自己的连接。</span></div></div><aside class="panel detail-panel" id="nodeDetail"><div class="empty">选择图中的任意知识节点以查看详情。</div></aside></div>
+</section>
+<section class="view" id="view-learn">
+ <div class="page-heading"><div><div class="eyebrow">INTERNALIZE THE MODEL</div><h1>物理学习器</h1><p>强制走完“诊断前测 → 掩蔽重构 → 费曼对抗 → 因果连接”四步认知闭环。做错不锁定内容，而是带着具体疑问进入学习。</p></div><div class="heading-side"><button class="btn btn-outline" data-go="map">⌘ 更换知识点</button></div></div>
+ <div class="levels-row" id="learnLevelChips"></div>
+ <div class="learn-layout"><div class="panel"><div class="panel-head"><div><h3 id="learnNodeTitle">选择一个知识点</h3><p id="learnNodeSub">先选择研究对象，再开始重构。</p></div><span class="pill" id="learnStatus">步骤 1 / 4</span></div><div class="stepper" id="learnStepper"></div><div id="learnStage"></div></div><div class="panel" id="learnConcept"><div class="empty">选择一个知识点后，这里会显示核心关系、条件和常见误区。</div></div></div>
+</section>
+<section class="view" id="view-practice">
+ <div class="page-heading"><div><div class="eyebrow">TEST THE CAUSAL MODEL</div><h1>物理做题器</h1><p>先说清“为什么使用这个规律”，再计算或判断。因果链不成立时先修正模型，不因碰巧得到相同答案而直接通过。</p></div><div class="heading-side"><span class="pill green">交错题型 · 无计时</span></div></div>
+ <div class="practice-layout"><div class="panel"><div class="practice-topline"><div><span class="pill" id="practiceTopic">模型选择</span><h2 style="margin-top:9px">先建立因果链</h2></div><span class="practice-index" id="practiceCount">题目 1</span></div><div class="question-big" id="practiceQuestion"></div><div class="logic-box"><strong>在看选项前先问：哪个规律连接已知量与所求量？</strong><p id="practiceHint">检查系统边界、适用条件，以及题目真正描述的变化。</p></div><div id="chainOptions" class="choice-list"></div><div id="practiceFeedback"></div><div class="stage-actions"><button class="btn btn-outline" id="practiceExplain">查看适用条件提示</button><button class="btn btn-primary" id="practiceContinue" disabled>进入答案判断 →</button></div><div id="answerStage" style="display:none;margin-top:21px;border-top:1px solid #edf1f5;padding-top:18px"><div class="eyebrow">MODEL CONSEQUENCE</div><h3 style="font-size:16px;margin:9px 0" >根据因果链判断结果</h3><div id="answerOptions" class="choice-list"></div><div id="answerFeedback"></div><div class="stage-actions"><button class="btn btn-outline" id="practiceRetry">重新分析因果链</button><button class="btn btn-primary" id="nextPractice">下一道交错题 →</button></div></div></div><div class="panel"><div class="panel-head"><div><h3>三层等价检查</h3><p>检查逻辑过程，而非只核对最终数字。</p></div></div><div class="checklist"><div class="research-step"><span class="step-n">01</span><div><strong>符号代数等价</strong><p>表达式在给定条件下是否可以互相变形？注意定义域、单位和近似条件。</p></div></div><div class="research-step"><span class="step-n">02</span><div><strong>物理规律等价</strong><p>能量法、动量法或牛顿定律是否真的描述同一过程？系统边界是否一致？</p></div></div><div class="research-step"><span class="step-n">03</span><div><strong>解法路径等价</strong><p>两条推导是否由同一组假设支持？若不等价，具体差异出现在哪一步？</p></div></div></div><div class="subpanel" style="margin-top:15px"><h4>手写推导与示意图</h4><p>在画布中画受力图、轨迹或电路草图，辅助把模型外显。当前版本提供绘图工具，但不自动识别图像拓扑。</p><canvas class="sketch" id="practiceSketch" style="height:170px;margin-top:11px;border:1px solid #e5edf5;border-radius:9px"></canvas><button class="btn btn-outline" style="margin-top:9px" id="clearPracticeSketch">清除画布</button></div><div class="fineprint">没有分数、排名或倒计时。选择错误只用于定位适用条件与因果模型的断点。</div></div></div>
+</section>
+<section class="view" id="view-applications">
+ <div class="page-heading"><div><div class="eyebrow">TRANSFER TO THE REAL WORLD</div><h1>物理应用器</h1><p>应用闭环：先看情境 → 停下来回忆 → 讲出模型 → 用数据计算 → 隔几天再次提取。调节参数，观察哪些变量真正改变结果。</p></div><div class="heading-side"><span class="pill orange">参数敏感性分析</span></div></div>
+ <div class="app-layout"><div class="panel"><div class="panel-head"><div><h3>应用场景库</h3><p>跨越初中、高中与物理系课程。</p></div></div><div class="app-list" id="appList"></div><div class="subpanel" style="margin-top:16px"><h4>五步应用闭环</h4><div class="research-step"><span class="step-n">1</span><div><strong>先看</strong><p>描述真实情境与系统边界。</p></div></div><div class="research-step"><span class="step-n">2</span><div><strong>停下来</strong><p>不看资料，先回忆适用模型。</p></div></div><div class="research-step"><span class="step-n">3</span><div><strong>讲出来</strong><p>解释变量之间的因果关系。</p></div></div><div class="research-step"><span class="step-n">4</span><div><strong>用一次</strong><p>计算并观察参数敏感性。</p></div></div><div class="research-step"><span class="step-n">5</span><div><strong>隔几天再提取</strong><p>3 天后重新遇到同类情境。</p></div></div></div></div><div class="panel" id="appDetail"><div class="empty">选择一个应用场景。</div></div></div>
+</section>
+<section class="view" id="view-research">
+ <div class="page-heading"><div><div class="eyebrow">CREATE A TESTABLE MODEL</div><h1>物理科研器</h1><p>AI 不替你公布结论，而是质疑假设、寻找反例、促使你改变参数并说明证据。开放问题可以暂时没有答案。</p></div><div class="heading-side"><span class="pill" style="background:var(--purple2);color:#7565b6">探索与创造</span></div></div>
+ <div class="research-layout"><div class="panel"><div class="panel-head"><div><h3>从一个现象开始</h3><p>选择主题或直接写下你观察到的现象。</p></div></div><div class="topic-grid" id="researchTopics"></div><label class="form-label" for="researchObservation">现象 / 观察</label><textarea id="researchObservation" class="textarea" placeholder="例如：两种看起来相似的薄膜，在连续照明下表现出不同的光谱稳定性。"></textarea><label class="form-label" for="researchQuestion">我提出的问题</label><textarea id="researchQuestion" class="textarea" placeholder="试着把观察转化成能被证据支持或反驳的问题。"></textarea><label class="form-label" for="researchHypothesis">当前假设（允许暂时不完整）</label><textarea id="researchHypothesis" class="textarea" placeholder="写出变量、可能的机制，以及你认为会出现的结果。"></textarea><div class="two-col" style="margin-top:14px"><div><label class="form-label" for="researchEvidence">验证方案 / 证据</label><textarea class="textarea" id="researchEvidence" placeholder="改变什么变量？测量什么量？如何排除混杂因素？"></textarea></div><div><label class="form-label" for="researchReflection">反思与修正</label><textarea class="textarea" id="researchReflection" placeholder="结果与预测有什么差异？哪个假设需要修改？"></textarea></div></div><div class="stage-actions"><button class="btn btn-outline" id="saveResearch">保存研究记录</button><button class="btn btn-primary" id="researchChallenge">质疑我的假设 ↗</button></div><div id="researchCoach" class="ai-reply" style="display:none"></div><div class="fineprint">科研记录保存在当前浏览器。这里的本地追问用于启发思考，不代表经过实验验证的结论。</div></div><div class="panel"><div class="panel-head"><div><h3>四层探索结构</h3><p>每一步都会让模型变得更可检验。</p></div></div><div class="research-step"><span class="step-n">01</span><div><strong>提出问题</strong><p>给出一个现象，但不预设唯一正确的问题。明确对象、尺度与观察方式。</p></div></div><div class="research-step"><span class="step-n">02</span><div><strong>建立假设</strong><p>写出可反驳的预测，指出变量间预期的关系。</p></div></div><div class="research-step"><span class="step-n">03</span><div><strong>推导与验证</strong><p>列出控制变量、测量量和能区分竞争假设的实验。</p></div></div><div class="research-step"><span class="step-n">04</span><div><strong>对比与反思</strong><p>比较预测和数据，识别误差来源或模型失效的边界。</p></div></div><div class="subpanel" style="margin-top:20px"><h4>科学史线索（简化时间线）</h4><div class="timeline"><div class="timeline-item"><small>17 世纪</small><strong>从运动规律到数学模型</strong><p>对照观测与可计算规律，建立可以被量化检验的力学框架。</p></div><div class="timeline-item"><small>19 世纪</small><strong>场、能量与统计描述</strong><p>电磁场和热现象推动了超越单个质点的描述方式。</p></div><div class="timeline-item"><small>20 世纪</small><strong>相对论与量子理论</strong><p>旧模型在新的尺度或条件下失效，促使理论结构被重建。</p></div><div class="timeline-item"><small>当代</small><strong>材料、量子信息与宇宙学</strong><p>通过跨尺度测量、计算模型和可复现实验研究复杂系统。</p></div></div></div><div class="panel-head" style="margin-top:23px;margin-bottom:12px"><div><h3>符号计算工作台</h3><p>浏览器端可选加载 Pyodide + SymPy（首次加载需要网络）。</p></div></div><label class="form-label" for="symbolicInput">SymPy 表达式</label><input class="field" id="symbolicInput" value="diff(x**2, x)" /><div class="stage-actions"><button class="btn btn-outline" id="loadSympy">加载符号计算</button><button class="btn btn-primary" id="runSympy">运行表达式</button></div><div id="sympyResult" class="feedback" style="display:none"></div><div class="fineprint">例如：diff(x**2, x)、integrate(sin(x), x)、solve(x**2 - 4, x)。请只运行你理解的表达式。</div></div></div>
+</section>
+<section class="view" id="view-settings">
+ <div class="page-heading"><div><div class="eyebrow">YOUR LOCAL WORKSPACE</div><h1>设置与数据</h1><p>进度、关系和科研记录默认保存在当前浏览器，不会自动上传。公开网页里的前端不能安全存放私密 API 密钥。</p></div></div>
+ <div class="dashboard-bottom"><div class="panel"><div class="panel-head"><div><h3>数据管理</h3><p>查看或导出本地学习轨迹。</p></div></div><div class="subpanel"><h4>导出学习数据</h4><p>导出模型完整度、因果链记录、自定义关系、应用复提取和科研笔记为 JSON 文件。</p><button class="btn btn-primary" id="exportData" style="margin-top:13px">导出 JSON ↓</button></div><div class="subpanel" style="margin-top:12px"><h4>导入学习数据</h4><p>仅导入可信的 JSON 备份；导入将合并已有内容。</p><input type="file" id="importFile" accept="application/json,.json" class="field" style="margin-top:12px" /></div><div class="subpanel" style="margin-top:12px"><h4>清除所有本地数据</h4><p>会删除本机保存的学习轨迹、自定义连接和研究记录。此操作不可撤销。</p><button class="btn btn-orange" id="clearData" style="margin-top:13px">清除本地数据</button></div></div><div class="panel"><div class="panel-head"><div><h3>可选 AI 教练接口</h3><p>可配置你自己的、允许跨域请求的后端代理。</p></div><span class="pill">可选</span></div><label class="form-label" for="aiEndpoint">AI 教练 Endpoint URL</label><input id="aiEndpoint" class="field" placeholder="https://你的服务器.example/api/coach" /><p class="fineprint">请求将以 JSON 发送 { topic, explanation, level, mode }。服务器需返回 { question } 或 { reply }。若接口不可用，将使用本地追问策略。</p><div class="stage-actions"><button class="btn btn-primary" id="saveAiEndpoint">保存接口设置</button><button class="btn btn-outline" id="clearAiEndpoint">清除</button></div><div class="subpanel" style="margin-top:16px"><h4>运行环境提示</h4><p>这是单文件静态网站，可直接发布到 GitHub Pages。D3 图谱与 MathJax 公式由 CDN 加载；符号计算由用户主动加载 Pyodide。语音输入依赖浏览器支持。画布绘图不包含自动视觉识别。</p></div><div class="subpanel" style="margin-top:12px"><h4>学习指标</h4><p>模型完整度与因果链清晰度只表示当前工作台中记录的操作和连接，不是智力、能力或考试成绩测量。</p></div></div></div>
+</section>
+<div class="footer-note">物理认知引擎 · 开放式知识地图<br/>学习不是反复摩擦记忆，而是体验、预测、验证与修正模型。</div>
+</div>
+</main>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+<script id="engine-data" type="application/json">{
+ "levels": [
+   {
+     "id": 1,
+     "name": "初等基础",
+     "subtitle": "从可观察的现象建立直觉",
+     "color": "blue"
+   },
+   {
+     "id": 2,
+     "name": "中等基础",
+     "subtitle": "把直觉写成可计算的模型",
+     "color": "green"
+   },
+   {
+     "id": 3,
+     "name": "数学基础与基本物理",
+     "subtitle": "用数学描述变化、结构与规律",
+     "color": "orange"
+   },
+   {
+     "id": 4,
+     "name": "核心理论与物质微观世界",
+     "subtitle": "从基本原理走向微观与集体现象",
+     "color": "purple"
+   },
+   {
+     "id": 5,
+     "name": "应用与工程及前沿问题",
+     "subtitle": "把模型迁移到真实系统与开放问题",
+     "color": "pink"
+   }
+ ],
+ "nodes": [
+   {
+     "id": "number",
+     "name": "数感与算术",
+     "level": 1,
+     "group": "初等数学",
+     "description": "数量、比例、单位与估算是建立物理量纲意识的起点。",
+     "prerequisites": [],
+     "formula": "v = s/t",
+     "conditions": [
+       "单位必须一致",
+       "平均速度定义为总路程除以总时间"
+     ],
+     "misconceptions": [
+       "数值相同就代表物理量相同",
+       "忽略单位也能可靠比较"
+     ],
+     "scenario": "估算步行速度与教室长度",
+     "phenomenon": "为什么同样走 100 米，不同人用时不同？",
+     "relations": [
+       {
+         "target": "algebra",
+         "type": "先修"
+       },
+       {
+         "target": "motion",
+         "type": "应用"
+       }
+     ]
+   },
+   {
+     "id": "algebra",
+     "name": "代数与方程",
+     "level": 1,
+     "group": "初等数学",
+     "description": "用符号表达未知量及量之间的约束关系。",
+     "prerequisites": [
+       "number"
+     ],
+     "formula": "ax+b=c",
+     "conditions": [
+       "变量定义清楚",
+       "等式两边进行相同的合法运算"
+     ],
+     "misconceptions": [
+       "移项是符号魔法",
+       "方程的解不需要检验"
+     ],
+     "scenario": "由总价和单价反推数量",
+     "phenomenon": "如何从几条已知关系找到未知量？",
+     "relations": [
+       {
+         "target": "functions",
+         "type": "先修"
+       },
+       {
+         "target": "newton",
+         "type": "应用"
+       }
+     ]
+   },
+   {
+     "id": "geometry",
+     "name": "几何与空间直觉",
+     "level": 1,
+     "group": "初等数学",
+     "description": "用图形、长度、角度和空间关系表达结构。",
+     "prerequisites": [
+       "number"
+     ],
+     "formula": "A_{triangle}=bh/2",
+     "conditions": [
+       "底与高垂直",
+       "长度单位统一"
+     ],
+     "misconceptions": [
+       "图形看起来相等就必然相等"
+     ],
+     "scenario": "画出镜面反射光路",
+     "phenomenon": "为什么入射角与反射角相等？",
+     "relations": [
+       {
+         "target": "vectors",
+         "type": "先修"
+       },
+       {
+         "target": "optics",
+         "type": "应用"
+       }
+     ]
+   },
+   {
+     "id": "motion",
+     "name": "运动与速度",
+     "level": 1,
+     "group": "初中物理",
+     "description": "用位置随时间的变化描述运动，区分路程、位移和速度。",
+     "prerequisites": [
+       "number"
+     ],
+     "formula": "v=\\frac{\\Delta x}{\\Delta t}",
+     "conditions": [
+       "明确参考系",
+       "平均速度与瞬时速度含义不同"
+     ],
+     "misconceptions": [
+       "路程等于位移",
+       "速度只有大小没有方向"
+     ],
+     "scenario": "汽车刹车距离",
+     "phenomenon": "为什么车速加倍，刹车距离可能不止加倍？",
+     "relations": [
+       {
+         "target": "functions",
+         "type": "先修"
+       },
+       {
+         "target": "newton",
+         "type": "先修"
+       },
+       {
+         "target": "kinematics",
+         "type": "推导"
+       }
+     ]
+   },
+   {
+     "id": "circuits",
+     "name": "简单电路",
+     "level": 1,
+     "group": "初中物理",
+     "description": "电流、电压、电阻与电路连接方式共同决定电路行为。",
+     "prerequisites": [
+       "algebra"
+     ],
+     "formula": "U=IR",
+     "conditions": [
+       "欧姆定律适用于相应线性电阻条件",
+       "明确串并联拓扑"
+     ],
+     "misconceptions": [
+       "电流被用掉了",
+       "电池提供固定电流而非电压"
+     ],
+     "scenario": "家庭电路与保险丝",
+     "phenomenon": "为什么短路会导致电流急剧增大？",
+     "relations": [
+       {
+         "target": "electromagnetism",
+         "type": "先修"
+       },
+       {
+         "target": "semiconductor",
+         "type": "应用"
+       }
+     ]
+   },
+   {
+     "id": "functions",
+     "name": "函数与图像",
+     "level": 2,
+     "group": "高中数学",
+     "description": "函数把变量之间的依赖关系表示为规则、表格或图像。",
+     "prerequisites": [
+       "algebra"
+     ],
+     "formula": "y=f(x)",
+     "conditions": [
+       "明确自变量与定义域",
+       "图像的斜率与函数变化相关"
+     ],
+     "misconceptions": [
+       "图像只是装饰",
+       "相关变化就一定是因果关系"
+     ],
+     "scenario": "读取运动的位移—时间图",
+     "phenomenon": "如何从图像斜率判断运动状态？",
+     "relations": [
+       {
+         "target": "calculus",
+         "type": "先修"
+       },
+       {
+         "target": "motion",
+         "type": "互补"
+       }
+     ]
+   },
+   {
+     "id": "vectors",
+     "name": "向量与三角函数",
+     "level": 2,
+     "group": "高中数学",
+     "description": "向量同时表达大小与方向，是力、速度和场的共同语言。",
+     "prerequisites": [
+       "geometry"
+     ],
+     "formula": "|\\vec a|=\\sqrt{a_x^2+a_y^2}",
+     "conditions": [
+       "分量使用同一坐标系",
+       "角度定义一致"
+     ],
+     "misconceptions": [
+       "向量可以像普通数一样直接比较",
+       "分量符号可以忽略"
+     ],
+     "scenario": "斜面上的重力分解",
+     "phenomenon": "为什么斜面上的重力需要分解？",
+     "relations": [
+       {
+         "target": "newton",
+         "type": "先修"
+       },
+       {
+         "target": "linear-algebra",
+         "type": "先修"
+       }
+     ]
+   },
+   {
+     "id": "newton",
+     "name": "牛顿力学",
+     "level": 2,
+     "group": "高中物理",
+     "description": "用运动定律和相互作用模型解释物体运动的改变。",
+     "prerequisites": [
+       "algebra",
+       "vectors",
+       "motion"
+     ],
+     "formula": "\\sum \\vec F=m\\vec a",
+     "conditions": [
+       "惯性参考系",
+       "质量近似不变",
+       "明确研究对象与受力"
+     ],
+     "misconceptions": [
+       "运动方向必然与合力方向相同",
+       "作用力与反作用力作用在同一物体"
+     ],
+     "scenario": "斜面、连接体与传送带",
+     "phenomenon": "为什么静止物体也可能受到多个力？",
+     "relations": [
+       {
+         "target": "lagrangian",
+         "type": "等价"
+       },
+       {
+         "target": "momentum",
+         "type": "推导"
+       },
+       {
+         "target": "relativity",
+         "type": "特例"
+       }
+     ]
+   },
+   {
+     "id": "kinematics",
+     "name": "曲线运动与圆周运动",
+     "level": 2,
+     "group": "高中物理",
+     "description": "加速度描述速度矢量的变化，圆周运动具有指向曲率中心的法向加速度。",
+     "prerequisites": [
+       "motion",
+       "vectors"
+     ],
+     "formula": "a_n=v^2/r",
+     "conditions": [
+       "圆周半径为 r",
+       "v 为瞬时速率"
+     ],
+     "misconceptions": [
+       "速率不变就没有加速度"
+     ],
+     "scenario": "卫星轨道与回旋运动",
+     "phenomenon": "速率不变时，速度为什么仍在变化？",
+     "relations": [
+       {
+         "target": "newton",
+         "type": "先修"
+       },
+       {
+         "target": "gravity",
+         "type": "互补"
+       }
+     ]
+   },
+   {
+     "id": "calculus",
+     "name": "微积分",
+     "level": 3,
+     "group": "数学基础",
+     "description": "导数描述局部变化率，积分累积连续变化量。",
+     "prerequisites": [
+       "functions"
+     ],
+     "formula": "v=\\frac{dx}{dt},\\quad x(t)-x(0)=\\int_0^t v(\\tau)d\\tau",
+     "conditions": [
+       "函数在相应区间满足可导或可积条件",
+       "积分变量与上下限一致"
+     ],
+     "misconceptions": [
+       "导数只是公式运算",
+       "积分总是面积且不考虑符号"
+     ],
+     "scenario": "从速度曲线恢复位移",
+     "phenomenon": "为什么瞬时速度是位置对时间的导数？",
+     "relations": [
+       {
+         "target": "differential-equations",
+         "type": "先修"
+       },
+       {
+         "target": "lagrangian",
+         "type": "先修"
+       },
+       {
+         "target": "quantum",
+         "type": "先修"
+       }
+     ]
+   },
+   {
+     "id": "linear-algebra",
+     "name": "线性代数",
+     "level": 3,
+     "group": "数学基础",
+     "description": "向量空间、线性映射、特征值与特征向量描述状态和变换。",
+     "prerequisites": [
+       "vectors",
+       "algebra"
+     ],
+     "formula": "A\\mathbf v=\\lambda\\mathbf v",
+     "conditions": [
+       "v 是非零向量",
+       "特征值与特征向量满足对应矩阵关系"
+     ],
+     "misconceptions": [
+       "矩阵只是数字表格",
+       "所有矩阵都能对角化"
+     ],
+     "scenario": "图像变换与量子态测量",
+     "phenomenon": "为什么某些方向经过变换后方向不变？",
+     "relations": [
+       {
+         "target": "quantum",
+         "type": "先修"
+       },
+       {
+         "target": "tensor",
+         "type": "先修"
+       },
+       {
+         "target": "ai",
+         "type": "应用"
+       }
+     ]
+   },
+   {
+     "id": "differential-equations",
+     "name": "微分方程",
+     "level": 3,
+     "group": "数学基础",
+     "description": "用未知函数及其导数之间的关系表达动力学规律。",
+     "prerequisites": [
+       "calculus"
+     ],
+     "formula": "m\\ddot x+kx=0",
+     "conditions": [
+       "给定参数与初始条件",
+       "模型假设与边界条件明确"
+     ],
+     "misconceptions": [
+       "微分方程只是一种积分技巧"
+     ],
+     "scenario": "弹簧振子与电路振荡",
+     "phenomenon": "同一方程为什么会因初始条件不同而产生不同运动？",
+     "relations": [
+       {
+         "target": "classical-mechanics",
+         "type": "先修"
+       },
+       {
+         "target": "electromagnetism",
+         "type": "先修"
+       }
+     ]
+   },
+   {
+     "id": "probability",
+     "name": "概率统计",
+     "level": 3,
+     "group": "数学基础",
+     "description": "描述随机变量、分布、统计推断与不确定性。",
+     "prerequisites": [
+       "algebra"
+     ],
+     "formula": "\\mathbb E[X]=\\sum_x xP(X=x)",
+     "conditions": [
+       "离散分布概率总和为 1",
+       "期望存在"
+     ],
+     "misconceptions": [
+       "随机意味着没有规律",
+       "期望值一定是可能出现的结果"
+     ],
+     "scenario": "测量误差与实验重复性",
+     "phenomenon": "为什么重复测量不会得到完全相同的数值？",
+     "relations": [
+       {
+         "target": "statistical-physics",
+         "type": "先修"
+       },
+       {
+         "target": "quantum",
+         "type": "互补"
+       }
+     ]
+   },
+   {
+     "id": "classical-mechanics",
+     "name": "分析力学",
+     "level": 3,
+     "group": "基本物理",
+     "description": "以广义坐标、作用量和相空间重述经典动力学。",
+     "prerequisites": [
+       "calculus",
+       "differential-equations"
+     ],
+     "formula": "\\frac{d}{dt}\\frac{\\partial L}{\\partial \\dot q_i}-\\frac{\\partial L}{\\partial q_i}=0",
+     "conditions": [
+       "广义坐标独立",
+       "拉格朗日量正确描述系统"
+     ],
+     "misconceptions": [
+       "拉格朗日力学是与牛顿力学无关的新规律"
+     ],
+     "scenario": "约束摆与耦合振子",
+     "phenomenon": "为什么选择合适的坐标能让复杂问题变简单？",
+     "relations": [
+       {
+         "target": "newton",
+         "type": "等价"
+       },
+       {
+         "target": "quantum-field",
+         "type": "先修"
+       }
+     ]
+   },
+   {
+     "id": "electromagnetism",
+     "name": "电磁学与电动力学",
+     "level": 3,
+     "group": "基本物理",
+     "description": "电荷、电流、电场和磁场由麦克斯韦方程组及物质关系联系。",
+     "prerequisites": [
+       "calculus",
+       "vectors",
+       "differential-equations"
+     ],
+     "formula": "\\nabla\\cdot\\mathbf E=\\rho/\\varepsilon_0",
+     "conditions": [
+       "注意 SI 单位制",
+       "介质中的本构关系需单独给出"
+     ],
+     "misconceptions": [
+       "电场线是实际存在的细线",
+       "磁场只由磁铁产生"
+     ],
+     "scenario": "光纤通信与电磁波传播",
+     "phenomenon": "为什么变化的电场和磁场可以形成传播的电磁波？",
+     "relations": [
+       {
+         "target": "optics",
+         "type": "推导"
+       },
+       {
+         "target": "semiconductor",
+         "type": "应用"
+       }
+     ]
+   },
+   {
+     "id": "statistical-physics",
+     "name": "热力学与统计物理",
+     "level": 3,
+     "group": "基本物理",
+     "description": "把宏观热力学规律与微观状态、概率和集体行为连接起来。",
+     "prerequisites": [
+       "probability",
+       "calculus"
+     ],
+     "formula": "S=k_B\\ln\\Omega",
+     "conditions": [
+       "Omega 表示可及微观态数",
+       "需明确熵定义的适用语境"
+     ],
+     "misconceptions": [
+       "温度是单个粒子的能量",
+       "熵总是简单等于混乱程度"
+     ],
+     "scenario": "热机效率与相变",
+     "phenomenon": "微观运动为何产生稳定的宏观温度？",
+     "relations": [
+       {
+         "target": "condensed-matter",
+         "type": "先修"
+       },
+       {
+         "target": "thermodynamics",
+         "type": "互补"
+       }
+     ]
+   },
+   {
+     "id": "relativity",
+     "name": "相对论",
+     "level": 3,
+     "group": "基本物理",
+     "description": "重新组织时空、能量和动量的关系，适用于高速或强引力情形。",
+     "prerequisites": [
+       "calculus",
+       "vectors"
+     ],
+     "formula": "E^2=p^2c^2+m^2c^4",
+     "conditions": [
+       "狭义相对论关系式",
+       "忽略引力场影响时使用"
+     ],
+     "misconceptions": [
+       "相对论意味着一切都主观"
+     ],
+     "scenario": "粒子加速器与卫星授时",
+     "phenomenon": "为什么高速运动下时间和长度的测量依赖参考系？",
+     "relations": [
+       {
+         "target": "newton",
+         "type": "特例"
+       },
+       {
+         "target": "particle-physics",
+         "type": "先修"
+       }
+     ]
+   },
+   {
+     "id": "quantum",
+     "name": "量子力学",
+     "level": 3,
+     "group": "基本物理",
+     "description": "用量子态、算符和测量概率描述微观系统。",
+     "prerequisites": [
+       "calculus",
+       "linear-algebra",
+       "differential-equations"
+     ],
+     "formula": "i\\hbar\\frac{\\partial}{\\partial t}|\\psi\\rangle=\\hat H|\\psi\\rangle",
+     "conditions": [
+       "态矢量归一化",
+       "哈密顿算符及边界条件明确"
+     ],
+     "misconceptions": [
+       "量子意味着任何结果都可能",
+       "测量可被简单理解为人意识改变物质"
+     ],
+     "scenario": "原子光谱与量子器件",
+     "phenomenon": "为什么原子能级呈离散结构？",
+     "relations": [
+       {
+         "target": "linear-algebra",
+         "type": "应用"
+       },
+       {
+         "target": "solid-state",
+         "type": "应用"
+       },
+       {
+         "target": "quantum-field",
+         "type": "先修"
+       }
+     ]
+   },
+   {
+     "id": "tensor",
+     "name": "矢量与张量",
+     "level": 3,
+     "group": "数学基础",
+     "description": "张量以与坐标无关的方式表达多线性关系及物理量变换。",
+     "prerequisites": [
+       "linear-algebra",
+       "calculus"
+     ],
+     "formula": "\\sigma_{ij}",
+     "conditions": [
+       "明确坐标基与指标约定",
+       "分清协变、逆变及物理约定"
+     ],
+     "misconceptions": [
+       "张量就是更大的矩阵"
+     ],
+     "scenario": "弹性应力与电磁场",
+     "phenomenon": "为什么同一物理关系在不同坐标系中形式应保持一致？",
+     "relations": [
+       {
+         "target": "relativity",
+         "type": "应用"
+       },
+       {
+         "target": "materials",
+         "type": "应用"
+       }
+     ]
+   },
+   {
+     "id": "optics",
+     "name": "光学",
+     "level": 4,
+     "group": "物质与微观世界",
+     "description": "研究光的传播、干涉、衍射、偏振及光与物质的相互作用。",
+     "prerequisites": [
+       "electromagnetism",
+       "functions"
+     ],
+     "formula": "n_1\\sin\\theta_1=n_2\\sin\\theta_2",
+     "conditions": [
+       "几何光学界面折射条件",
+       "折射率与波长、介质状态有关"
+     ],
+     "misconceptions": [
+       "光只具有粒子性或只具有波动性"
+     ],
+     "scenario": "激光、成像和光纤",
+     "phenomenon": "为什么光通过狭缝会产生衍射？",
+     "relations": [
+       {
+         "target": "electromagnetism",
+         "type": "推导"
+       },
+       {
+         "target": "optoelectronics",
+         "type": "应用"
+       }
+     ]
+   },
+   {
+     "id": "solid-state",
+     "name": "固体物理",
+     "level": 4,
+     "group": "物质与微观世界",
+     "description": "解释晶体结构、能带、晶格振动、电子关联及集体现象。",
+     "prerequisites": [
+       "quantum",
+       "statistical-physics"
+     ],
+     "formula": "E_n(\\mathbf k)",
+     "conditions": [
+       "能带模型依赖晶体周期性等假设",
+       "具体材料需考虑缺陷与相互作用"
+     ],
+     "misconceptions": [
+       "能带是电子沿着固定轨道运动的轨迹"
+     ],
+     "scenario": "金属、绝缘体与超导体",
+     "phenomenon": "为什么结构相近的材料导电性差别很大？",
+     "relations": [
+       {
+         "target": "semiconductor",
+         "type": "先修"
+       },
+       {
+         "target": "materials",
+         "type": "互补"
+       }
+     ]
+   },
+   {
+     "id": "semiconductor",
+     "name": "半导体物理",
+     "level": 4,
+     "group": "核心理论与微观世界",
+     "description": "通过能带、载流子统计、掺杂与结区解释器件行为。",
+     "prerequisites": [
+       "quantum",
+       "solid-state",
+       "statistical-physics"
+     ],
+     "formula": "n_i=\\sqrt{N_cN_v}e^{-E_g/(2k_BT)}",
+     "conditions": [
+       "热平衡",
+       "非简并近似",
+       "抛物线能带近似"
+     ],
+     "misconceptions": [
+       "掺杂只是增加杂质而不改变载流子浓度",
+       "半导体只是电阻较大的材料"
+     ],
+     "scenario": "PN 结、LED 与芯片晶体管",
+     "phenomenon": "为什么少量掺杂就能显著改变导电性？",
+     "relations": [
+       {
+         "target": "solid-state",
+         "type": "应用"
+       },
+       {
+         "target": "optoelectronics",
+         "type": "应用"
+       },
+       {
+         "target": "materials",
+         "type": "互补"
+       }
+     ]
+   },
+   {
+     "id": "condensed-matter",
+     "name": "凝聚态物理",
+     "level": 4,
+     "group": "物质与微观世界",
+     "description": "研究大量粒子组成的物质如何涌现出新的集体性质。",
+     "prerequisites": [
+       "quantum",
+       "statistical-physics"
+     ],
+     "formula": "H=H_0+H_{int}",
+     "conditions": [
+       "哈密顿量分解取决于所研究体系",
+       "近似方法需检验适用范围"
+     ],
+     "misconceptions": [
+       "宏观性质可总由单个粒子性质简单相加得到"
+     ],
+     "scenario": "超导、磁性与拓扑材料",
+     "phenomenon": "为什么集体系统会出现单个粒子不具备的性质？",
+     "relations": [
+       {
+         "target": "solid-state",
+         "type": "互补"
+       },
+       {
+         "target": "materials",
+         "type": "应用"
+       }
+     ]
+   },
+   {
+     "id": "materials",
+     "name": "材料物理",
+     "level": 4,
+     "group": "核心理论与微观世界",
+     "description": "连接材料的结构、缺陷、相变、输运与宏观性能。",
+     "prerequisites": [
+       "solid-state",
+       "condensed-matter"
+     ],
+     "formula": "\\text{结构}\\rightarrow\\text{性质}\\rightarrow\\text{功能}",
+     "conditions": [
+       "需明确尺度与制备历史",
+       "结构—性质关联通常需要多种表征互证"
+     ],
+     "misconceptions": [
+       "材料性能只由化学成分决定"
+     ],
+     "scenario": "钙钛矿发光材料与纳米材料",
+     "phenomenon": "为什么同种成分会因晶体结构不同而表现不同？",
+     "relations": [
+       {
+         "target": "semiconductor",
+         "type": "互补"
+       },
+       {
+         "target": "optoelectronics",
+         "type": "应用"
+       }
+     ]
+   },
+   {
+     "id": "quantum-field",
+     "name": "量子场论",
+     "level": 4,
+     "group": "核心理论",
+     "description": "把场作为基本自由度，统一量子原理与相对论性局域动力学。",
+     "prerequisites": [
+       "quantum",
+       "classical-mechanics",
+       "relativity"
+     ],
+     "formula": "\\mathcal L=\\mathcal L(\\phi,\\partial_\\mu\\phi)",
+     "conditions": [
+       "场的定义与对称性明确",
+       "具体理论需说明规范与重整化方案"
+     ],
+     "misconceptions": [
+       "量子场论只是量子力学换一种符号"
+     ],
+     "scenario": "粒子相互作用与标准模型",
+     "phenomenon": "为什么粒子可以被理解为量子场的激发？",
+     "relations": [
+       {
+         "target": "particle-physics",
+         "type": "先修"
+       },
+       {
+         "target": "classical-mechanics",
+         "type": "先修"
+       }
+     ]
+   },
+   {
+     "id": "particle-physics",
+     "name": "高能与粒子物理",
+     "level": 4,
+     "group": "物质与微观世界",
+     "description": "研究基本粒子、相互作用及标准模型的实验检验。",
+     "prerequisites": [
+       "quantum-field",
+       "relativity"
+     ],
+     "formula": "E^2=p^2c^2+m^2c^4",
+     "conditions": [
+       "注意粒子种类、能标与相互作用通道"
+     ],
+     "misconceptions": [
+       "标准模型解释了所有宇宙成分"
+     ],
+     "scenario": "加速器碰撞与中微子实验",
+     "phenomenon": "如何从探测器信号推断不可直接观测的粒子？",
+     "relations": [
+       {
+         "target": "quantum-field",
+         "type": "应用"
+       },
+       {
+         "target": "cosmology",
+         "type": "互补"
+       }
+     ]
+   },
+   {
+     "id": "optoelectronics",
+     "name": "光电工程",
+     "level": 5,
+     "group": "应用与工程",
+     "description": "将光、电荷、能带与器件结构结合，实现发光、探测和信息传输。",
+     "prerequisites": [
+       "optics",
+       "semiconductor",
+       "materials"
+     ],
+     "formula": "P_{opt}=\\eta_{ext}P_{elec}",
+     "conditions": [
+       "效率定义需区分内量子效率、外量子效率与功率效率"
+     ],
+     "misconceptions": [
+       "发光峰位相同就代表器件效率相同"
+     ],
+     "scenario": "LED、激光器与光探测器",
+     "phenomenon": "如何把电子注入转化为高效光子输出？",
+     "relations": [
+       {
+         "target": "semiconductor",
+         "type": "应用"
+       },
+       {
+         "target": "materials",
+         "type": "应用"
+       }
+     ]
+   },
+   {
+     "id": "energy",
+     "name": "新能源与储能",
+     "level": 5,
+     "group": "应用与工程",
+     "description": "运用能量转换、输运、界面化学和材料设计解决能源问题。",
+     "prerequisites": [
+       "electromagnetism",
+       "statistical-physics",
+       "materials"
+     ],
+     "formula": "\\eta=\\frac{E_{out}}{E_{in}}",
+     "conditions": [
+       "明确能量边界与效率定义",
+       "实验条件与工作循环需可比"
+     ],
+     "misconceptions": [
+       "峰值效率等于实际系统效率"
+     ],
+     "scenario": "太阳能电池与锂离子电池",
+     "phenomenon": "材料的微观缺陷如何影响器件寿命？",
+     "relations": [
+       {
+         "target": "materials",
+         "type": "应用"
+       },
+       {
+         "target": "ai",
+         "type": "互补"
+       }
+     ]
+   },
+   {
+     "id": "ai",
+     "name": "人工智能与交叉学科",
+     "level": 5,
+     "group": "应用与工程",
+     "description": "以数据、优化、概率模型和计算方法辅助科学建模。",
+     "prerequisites": [
+       "linear-algebra",
+       "probability"
+     ],
+     "formula": "\\theta_{t+1}=\\theta_t-\\eta\\nabla_\\theta L",
+     "conditions": [
+       "梯度存在或采用合适替代方法",
+       "学习率与损失函数定义明确"
+     ],
+     "misconceptions": [
+       "模型预测准确就意味着因果解释正确"
+     ],
+     "scenario": "材料性质预测与实验参数优化",
+     "phenomenon": "AI 如何帮助缩小实验搜索空间而不替代物理验证？",
+     "relations": [
+       {
+         "target": "linear-algebra",
+         "type": "应用"
+       },
+       {
+         "target": "materials",
+         "type": "应用"
+       }
+     ]
+   },
+   {
+     "id": "cosmology",
+     "name": "宇宙学与宇宙起源",
+     "level": 5,
+     "group": "前沿问题",
+     "description": "研究宇宙的大尺度演化、早期宇宙、暗物质与引力波证据。",
+     "prerequisites": [
+       "relativity",
+       "particle-physics",
+       "statistical-physics"
+     ],
+     "formula": "H^2\\sim \\frac{8\\pi G}{3}\\rho",
+     "conditions": [
+       "这是简化的弗里德曼方程形式",
+       "完整形式需包含曲率、宇宙学常数等项"
+     ],
+     "misconceptions": [
+       "宇宙学模型的每个参数都已被直接观测"
+     ],
+     "scenario": "宇宙微波背景与引力波观测",
+     "phenomenon": "我们如何从有限观测推断宇宙的历史？",
+     "relations": [
+       {
+         "target": "relativity",
+         "type": "应用"
+       },
+       {
+         "target": "particle-physics",
+         "type": "互补"
+       }
+     ]
+   },
+   {
+     "id": "sound",
+     "name": "声现象与波",
+     "level": 1,
+     "group": "初中物理",
+     "description": "用振动、介质和波传播解释音调、响度、音色与回声。",
+     "prerequisites": [
+       "number"
+     ],
+     "formula": "v=f\\lambda",
+     "conditions": [
+       "波速、频率和波长使用一致单位",
+       "机械波传播需要介质"
+     ],
+     "misconceptions": [
+       "声音在真空中也能传播",
+       "响度只由频率决定"
+     ],
+     "scenario": "回声测距与乐器音色",
+     "phenomenon": "为什么不同乐器演奏同一个音高仍然听起来不同？",
+     "relations": [
+       {
+         "target": "optics",
+         "type": "对比"
+       },
+       {
+         "target": "functions",
+         "type": "先修"
+       }
+     ]
+   },
+   {
+     "id": "phase-change",
+     "name": "物态变化与热现象",
+     "level": 1,
+     "group": "初中物理",
+     "description": "通过粒子运动、热量交换和相变解释熔化、凝固、汽化与凝结。",
+     "prerequisites": [
+       "number"
+     ],
+     "formula": "Q=mc\\Delta T",
+     "conditions": [
+       "此式描述无相变时的显热过程",
+       "比热容在温区内可近似视为常数"
+     ],
+     "misconceptions": [
+       "温度升高时吸收的热量只与温度有关",
+       "热量是物体储存的一种物质"
+     ],
+     "scenario": "冰水混合与保温设计",
+     "phenomenon": "为什么冰在熔化过程中吸热，温度却可以保持不变？",
+     "relations": [
+       {
+         "target": "thermodynamics",
+         "type": "先修"
+       },
+       {
+         "target": "statistical-physics",
+         "type": "先修"
+       }
+     ]
+   },
+   {
+     "id": "gravity",
+     "name": "万有引力与天体运动",
+     "level": 2,
+     "group": "高中物理",
+     "description": "用引力定律和运动方程解释行星、卫星及自由落体。",
+     "prerequisites": [
+       "newton",
+       "kinematics"
+     ],
+     "formula": "F=G\\frac{m_1m_2}{r^2}",
+     "conditions": [
+       "点质量或球对称近似",
+       "r 为两质心间距离"
+     ],
+     "misconceptions": [
+       "卫星不受重力作用",
+       "远离地球后引力突然消失"
+     ],
+     "scenario": "卫星轨道与行星运动",
+     "phenomenon": "为什么卫星持续下落，却没有撞向地面？",
+     "relations": [
+       {
+         "target": "newton",
+         "type": "应用"
+       },
+       {
+         "target": "cosmology",
+         "type": "先修"
+       }
+     ]
+   },
+   {
+     "id": "work-energy",
+     "name": "功、能与能量守恒",
+     "level": 2,
+     "group": "高中物理",
+     "description": "以功描述力对能量的传递，并通过能量变化连接不同过程。",
+     "prerequisites": [
+       "newton",
+       "vectors"
+     ],
+     "formula": "W=\\Delta K",
+     "conditions": [
+       "动能定理适用于合外力做功",
+       "机械能守恒还要求非保守力做功为零或相互抵消"
+     ],
+     "misconceptions": [
+       "有力就一定做功",
+       "能量守恒等于机械能始终不变"
+     ],
+     "scenario": "刹车、弹簧与过山车",
+     "phenomenon": "为什么刹车时动能减少，但能量并没有消失？",
+     "relations": [
+       {
+         "target": "momentum",
+         "type": "对比"
+       },
+       {
+         "target": "statistical-physics",
+         "type": "互补"
+       }
+     ]
+   },
+   {
+     "id": "momentum",
+     "name": "动量与碰撞",
+     "level": 2,
+     "group": "高中物理",
+     "description": "以动量描述运动状态，并在合外冲量为零时使用动量守恒。",
+     "prerequisites": [
+       "vectors",
+       "newton"
+     ],
+     "formula": "\\Delta \\mathbf p=\\mathbf J",
+     "conditions": [
+       "系统所受合外冲量可忽略",
+       "先明确系统边界及碰撞前后时段"
+     ],
+     "misconceptions": [
+       "动量守恒要求每个物体都不受力",
+       "动量和动能是同一个量"
+     ],
+     "scenario": "碰撞、火箭推进与磁力牛顿摆",
+     "phenomenon": "碰撞过程中，为什么系统动量可能守恒而动能不守恒？",
+     "relations": [
+       {
+         "target": "newton",
+         "type": "推导"
+       },
+       {
+         "target": "work-energy",
+         "type": "对比"
+       }
+     ]
+   },
+   {
+     "id": "thermodynamics",
+     "name": "热力学",
+     "level": 3,
+     "group": "基本物理",
+     "description": "通过状态量和过程量描述热、功、内能与过程方向。",
+     "prerequisites": [
+       "calculus",
+       "phase-change"
+     ],
+     "formula": "\\Delta U=Q-W",
+     "conditions": [
+       "此处约定 W 为系统对外做功",
+       "需声明符号约定与系统边界"
+     ],
+     "misconceptions": [
+       "热和功是状态量",
+       "第一定律能单独判断所有过程是否自发"
+     ],
+     "scenario": "热机、制冷机与能量利用",
+     "phenomenon": "为什么热量不能全部转化为循环做功？",
+     "relations": [
+       {
+         "target": "statistical-physics",
+         "type": "互补"
+       },
+       {
+         "target": "energy",
+         "type": "应用"
+       }
+     ]
+   },
+   {
+     "id": "lagrangian",
+     "name": "拉格朗日力学",
+     "level": 3,
+     "group": "分析力学",
+     "description": "通过拉格朗日量与变分原理，在广义坐标下推导系统运动方程。",
+     "prerequisites": [
+       "calculus",
+       "differential-equations",
+       "newton"
+     ],
+     "formula": "L=T-V",
+     "conditions": [
+       "保守力系统可常取 L=T−V",
+       "坐标、约束和势能表达必须一致"
+     ],
+     "misconceptions": [
+       "拉格朗日方法是与牛顿定律无关的另一套自然规律"
+     ],
+     "scenario": "摆、约束系统和耦合振子",
+     "phenomenon": "为什么一个标量函数可以编码多个运动方程？",
+     "relations": [
+       {
+         "target": "newton",
+         "type": "等价"
+       },
+       {
+         "target": "classical-mechanics",
+         "type": "互补"
+       }
+     ]
+   },
+   {
+     "id": "hamiltonian",
+     "name": "哈密顿力学",
+     "level": 3,
+     "group": "分析力学",
+     "description": "以广义坐标和共轭动量描述相空间中的动力学演化。",
+     "prerequisites": [
+       "lagrangian",
+       "calculus",
+       "linear-algebra"
+     ],
+     "formula": "\\dot q_i=\\frac{\\partial H}{\\partial p_i},\\quad \\dot p_i=-\\frac{\\partial H}{\\partial q_i}",
+     "conditions": [
+       "需由拉格朗日量构造合适的哈密顿量",
+       "正则变量与约束处理需明确"
+     ],
+     "misconceptions": [
+       "哈密顿量在任何系统中都简单等于总机械能"
+     ],
+     "scenario": "相空间轨迹与量子化",
+     "phenomenon": "为什么相空间能把位置和动量放在同一幅图中？",
+     "relations": [
+       {
+         "target": "lagrangian",
+         "type": "等价"
+       },
+       {
+         "target": "quantum",
+         "type": "先修"
+       }
+     ]
+   },
+   {
+     "id": "complex-analysis",
+     "name": "复变函数",
+     "level": 3,
+     "group": "数学基础",
+     "description": "研究复函数的解析性、积分、留数与映射，用于场论和波动问题。",
+     "prerequisites": [
+       "calculus",
+       "linear-algebra"
+     ],
+     "formula": "f(z)=u(x,y)+iv(x,y)",
+     "conditions": [
+       "解析函数满足相应的柯西—黎曼条件",
+       "定义域与奇点结构必须明确"
+     ],
+     "misconceptions": [
+       "复数只是难以理解的二维实数对",
+       "所有复函数都处处可导"
+     ],
+     "scenario": "电磁场、振荡积分与响应函数",
+     "phenomenon": "为什么复数表示能简化相位和振荡问题？",
+     "relations": [
+       {
+         "target": "electromagnetism",
+         "type": "应用"
+       },
+       {
+         "target": "quantum",
+         "type": "应用"
+       }
+     ]
+   },
+   {
+     "id": "group-theory",
+     "name": "群论与对称性",
+     "level": 4,
+     "group": "数学基础与理论物理",
+     "description": "用群描述保持结构不变的变换，并连接对称性、简并与守恒规律。",
+     "prerequisites": [
+       "linear-algebra",
+       "calculus"
+     ],
+     "formula": "\\text{对称变换};g: \\mathcal S\\to\\mathcal S",
+     "conditions": [
+       "需定义集合、运算及单位元、逆元等群公理",
+       "诺特定理还要求连续对称性与作用量框架"
+     ],
+     "misconceptions": [
+       "有任何对称图案就自动对应守恒量",
+       "群论只用于抽象数学"
+     ],
+     "scenario": "晶体对称性、选择定则与粒子分类",
+     "phenomenon": "为什么对称性可以限制物理过程允许出现的结果？",
+     "relations": [
+       {
+         "target": "quantum",
+         "type": "应用"
+       },
+       {
+         "target": "solid-state",
+         "type": "应用"
+       },
+       {
+         "target": "quantum-field",
+         "type": "先修"
+       }
+     ]
+   },
+   {
+     "id": "atom-molecule",
+     "name": "原子与分子物理",
+     "level": 4,
+     "group": "物质与微观世界",
+     "description": "研究原子能级、分子振转态、光谱及原子间相互作用。",
+     "prerequisites": [
+       "quantum",
+       "electromagnetism"
+     ],
+     "formula": "\\Delta E=h\\nu",
+     "conditions": [
+       "光谱跃迁需满足能量守恒与相应选择定则",
+       "真实谱线还受寿命、碰撞及仪器分辨率影响"
+     ],
+     "misconceptions": [
+       "光谱线宽只由仪器决定",
+       "原子电子沿经典轨道绕核运动"
+     ],
+     "scenario": "吸收光谱、激光介质与分子振动",
+     "phenomenon": "为什么元素可以通过特征光谱被识别？",
+     "relations": [
+       {
+         "target": "quantum",
+         "type": "应用"
+       },
+       {
+         "target": "optics",
+         "type": "互补"
+       }
+     ]
+   },
+   {
+     "id": "nuclear-physics",
+     "name": "原子核与核物理",
+     "level": 4,
+     "group": "物质与微观世界",
+     "description": "研究原子核的结构、衰变、核反应和辐射与物质的相互作用。",
+     "prerequisites": [
+       "quantum",
+       "relativity"
+     ],
+     "formula": "E=mc^2",
+     "conditions": [
+       "质量亏损对应的能量差需按反应前后总能量核算",
+       "放射性衰变采用统计规律描述"
+     ],
+     "misconceptions": [
+       "核反应与化学反应只是能量大小不同的同一机制"
+     ],
+     "scenario": "核医学、核能与辐射探测",
+     "phenomenon": "为什么少量质量差可以对应很大的释放能量？",
+     "relations": [
+       {
+         "target": "particle-physics",
+         "type": "互补"
+       },
+       {
+         "target": "energy",
+         "type": "应用"
+       }
+     ]
+   },
+   {
+     "id": "quantum-computing",
+     "name": "量子计算与退相干",
+     "level": 5,
+     "group": "应用与前沿",
+     "description": "利用量子态、叠加、纠缠与测量构建计算模型，同时处理噪声和退相干。",
+     "prerequisites": [
+       "quantum",
+       "linear-algebra",
+       "probability"
+     ],
+     "formula": "|\\psi\\rangle=\\alpha|0\\rangle+\\beta|1\\rangle",
+     "conditions": [
+       "态归一化且测量概率由振幅模平方给出",
+       "实际量子处理器需考虑噪声与纠错开销"
+     ],
+     "misconceptions": [
+       "量子计算机对所有问题都更快",
+       "叠加态允许直接读取全部振幅"
+     ],
+     "scenario": "量子比特、量子线路与误差抑制",
+     "phenomenon": "为什么环境中的微弱耦合会破坏量子相干？",
+     "relations": [
+       {
+         "target": "quantum",
+         "type": "应用"
+       },
+       {
+         "target": "ai",
+         "type": "互补"
+       }
+     ]
+   },
+   {
+     "id": "nanotechnology",
+     "name": "纳米技术与低维材料",
+     "level": 5,
+     "group": "应用与工程",
+     "description": "利用纳米尺度的界面、量子限域和结构效应调控材料功能。",
+     "prerequisites": [
+       "solid-state",
+       "materials",
+       "quantum"
+     ],
+     "formula": "E_g=E_g(L)\\;\\text{（限域尺度相关）}",
+     "conditions": [
+       "限域效应与长度尺度、势垒及材料参数有关",
+       "不能把所有纳米效应都归因于量子限域"
+     ],
+     "misconceptions": [
+       "尺寸越小任何性能都会越好",
+       "纳米材料的性质只由粒径决定"
+     ],
+     "scenario": "量子点、二维材料与纳米光电器件",
+     "phenomenon": "为什么相同成分的纳米晶与块体材料可能有不同光谱？",
+     "relations": [
+       {
+         "target": "materials",
+         "type": "应用"
+       },
+       {
+         "target": "optoelectronics",
+         "type": "应用"
+       }
+     ]
+   },
+   {
+     "id": "fiber-comms",
+     "name": "光纤与信息通信",
+     "level": 5,
+     "group": "应用与工程",
+     "description": "将电磁波、折射率分布、调制与探测结合，以光信号承载信息。",
+     "prerequisites": [
+       "optics",
+       "electromagnetism",
+       "optoelectronics"
+     ],
+     "formula": "\\text{容量与带宽、信噪比相关}",
+     "conditions": [
+       "需区分材料损耗、色散、非线性及接收噪声",
+       "通信容量公式依赖信道模型与单位约定"
+     ],
+     "misconceptions": [
+       "光纤只靠光在镜面之间反射传播",
+       "带宽越大就不受噪声限制"
+     ],
+     "scenario": "宽带通信、光模块与数据中心互连",
+     "phenomenon": "为什么脉冲经过长光纤后会展宽？",
+     "relations": [
+       {
+         "target": "optics",
+         "type": "应用"
+       },
+       {
+         "target": "optoelectronics",
+         "type": "应用"
+       }
+     ]
+   },
+   {
+     "id": "nmr",
+     "name": "核磁共振与自旋动力学",
+     "level": 5,
+     "group": "应用与工程",
+     "description": "利用自旋在磁场中的能级与进动，通过射频脉冲探测材料或分子环境。",
+     "prerequisites": [
+       "quantum",
+       "electromagnetism"
+     ],
+     "formula": "\\omega_0=\\gamma B_0",
+     "conditions": [
+       "共振频率取决于旋磁比与静磁场",
+       "弛豫时间和线宽需说明测量定义及展宽机制"
+     ],
+     "misconceptions": [
+       "共振信号只由磁场强度决定",
+       "谱线宽与弛豫过程毫无关联"
+     ],
+     "scenario": "磁共振成像、材料表征与自旋弛豫",
+     "phenomenon": "为什么改变静磁场会改变共振频率？",
+     "relations": [
+       {
+         "target": "quantum",
+         "type": "应用"
+       },
+       {
+         "target": "electromagnetism",
+         "type": "应用"
+       }
+     ]
+   },
+   {
+     "id": "chip-design",
+     "name": "芯片与半导体器件设计",
+     "level": 5,
+     "group": "应用与工程",
+     "description": "将能带、载流子输运、PN 结和器件几何映射为电学功能。",
+     "prerequisites": [
+       "semiconductor",
+       "solid-state",
+       "electromagnetism"
+     ],
+     "formula": "I_D\\approx I_0(e^{qV/(nk_BT)}-1)",
+     "conditions": [
+       "此式为理想二极管方程形式",
+       "实际器件受串联电阻、复合与温度等影响"
+     ],
+     "misconceptions": [
+       "晶体管只是一个可变电阻",
+       "微缩只受光刻分辨率限制"
+     ],
+     "scenario": "二极管、晶体管与集成电路",
+     "phenomenon": "为什么晶体管尺寸缩小后泄漏与发热会成为限制？",
+     "relations": [
+       {
+         "target": "semiconductor",
+         "type": "应用"
+       },
+       {
+         "target": "ai",
+         "type": "互补"
+       }
+     ]
+   },
+   {
+     "id": "waves",
+     "name": "振动与波动",
+     "level": 2,
+     "group": "高中物理",
+     "description": "用周期运动、相位、叠加和波动方程解释振动与传播。",
+     "prerequisites": [
+       "functions",
+       "motion"
+     ],
+     "formula": "x(t)=A\\cos(\\omega t+\\phi)",
+     "conditions": [
+       "简谐形式适用于线性回复力的理想近似",
+       "阻尼和驱动会改变稳态响应"
+     ],
+     "misconceptions": [
+       "波传播意味着介质整体向前运动",
+       "频率和波速是同一物理量"
+     ],
+     "scenario": "弦振动、共振与驻波",
+     "phenomenon": "为什么两个波叠加后可能局部相互抵消？",
+     "relations": [
+       {
+         "target": "sound",
+         "type": "先修"
+       },
+       {
+         "target": "optics",
+         "type": "应用"
+       }
+     ]
+   }
+ ],
+ "practiceItems": [
+   {
+     "id": "p1",
+     "topic": "运动与速度",
+     "model": "运动学定义",
+     "question": "一辆车 10 s 内沿直线从 x=2 m 到 x=32 m。平均速度是多少？",
+     "options": [
+       "3 m/s",
+       "30 m/s",
+       "2 m/s",
+       "无法确定"
+     ],
+     "answer": 0,
+     "why": "平均速度为位移除以时间：(32−2)/10=3 m/s。关键是使用位移变化，而不是终点位置。"
+   },
+   {
+     "id": "p2",
+     "topic": "牛顿力学",
+     "model": "受力与加速度",
+     "question": "物体沿水平面匀速直线运动，合力如何？",
+     "options": [
+       "沿运动方向",
+       "与运动方向相反",
+       "为零",
+       "等于重力"
+     ],
+     "answer": 2,
+     "why": "匀速直线运动意味着速度矢量不变，加速度为零，因此合力为零。摩擦力可能存在，但被其他力平衡。"
+   },
+   {
+     "id": "p3",
+     "topic": "电路",
+     "model": "欧姆定律",
+     "question": "电阻保持 4 Ω，电压从 4 V 增至 8 V，电流如何变化？",
+     "options": [
+       "减半",
+       "不变",
+       "加倍",
+       "增为四倍"
+     ],
+     "answer": 2,
+     "why": "在欧姆定律适用的条件下 I=U/R，因此电流由 1 A 增至 2 A。"
+   },
+   {
+     "id": "p4",
+     "topic": "微积分",
+     "model": "变化率",
+     "question": "位置函数 x(t) 的导数在物理上通常表示什么？",
+     "options": [
+       "位移",
+       "瞬时速度",
+       "加速度",
+       "总路程"
+     ],
+     "answer": 1,
+     "why": "导数给出位置对时间的瞬时变化率，即瞬时速度。加速度是速度对时间的导数。"
+   },
+   {
+     "id": "p5",
+     "topic": "量子力学",
+     "model": "本征态与测量",
+     "question": "若状态是可观测量算符的本征态，理想测量该可观测量会得到什么？",
+     "options": [
+       "任意实数",
+       "对应本征值",
+       "必然为零",
+       "只能得到平均值"
+     ],
+     "answer": 1,
+     "why": "在理想测量框架下，本征态对应的测量结果为其本征值。若存在简并，状态空间的细节需要进一步讨论。"
+   },
+   {
+     "id": "p6",
+     "topic": "半导体物理",
+     "model": "载流子与掺杂",
+     "question": "在适当条件下，对硅进行施主掺杂最直接的影响是什么？",
+     "options": [
+       "必然消除带隙",
+       "增加电子浓度",
+       "使所有电子静止",
+       "必然变成金属"
+     ],
+     "answer": 1,
+     "why": "施主能级可向导带提供电子，通常提高电子浓度；实际结果取决于掺杂水平、温度和补偿等因素。"
+   },
+   {
+     "id": "p7",
+     "topic": "万有引力",
+     "model": "引力提供向心力",
+     "question": "理想二体模型中，圆轨道卫星的轨道半径增大时，轨道速度怎样变化？",
+     "options": [
+       "轨道半径越大，轨道速度越小",
+       "轨道半径越大，速度越大",
+       "速度与轨道半径无关",
+       "卫星不受引力"
+     ],
+     "answer": 0,
+     "why": "由 GMm/r²=mv²/r 得 v=√(GM/r)。半径增大时轨道速度减小，但轨道总机械能变大。"
+   },
+   {
+     "id": "p8",
+     "topic": "功与能量",
+     "model": "能量转化与耗散",
+     "question": "滑块在粗糙水平面上滑行并最终停止，减少的动能主要转化为什么？",
+     "options": [
+       "动能被摩擦力彻底消灭",
+       "通过摩擦过程转化为内能等形式",
+       "物体质量随停止而降低",
+       "能量守恒只适用于无摩擦系统"
+     ],
+     "answer": 1,
+     "why": "摩擦使机械能转化为内能等微观能量形式。能量守恒仍成立，守恒的是包含这些形式的总能量。"
+   },
+   {
+     "id": "p9",
+     "topic": "电磁学与电动力学",
+     "model": "法拉第电磁感应",
+     "question": "闭合回路的磁通量保持不变，理想情况下感应电动势如何？",
+     "options": [
+       "始终存在且恒定",
+       "只取决于磁通量本身",
+       "为零，因为磁通量变化率为零",
+       "只在磁场为零时出现"
+     ],
+     "answer": 2,
+     "why": "法拉第定律将感应电动势与磁通量的时间变化率联系起来。磁场可以非零，但若磁通量不变，感应电动势为零。"
+   },
+   {
+     "id": "p10",
+     "topic": "振动与波动",
+     "model": "简谐运动状态",
+     "question": "简谐振子满足 x=A cos(ωt)。经过平衡位置 x=0 时，理想情况下怎样？",
+     "options": [
+       "速率最大、加速度为零",
+       "速率为零、加速度最大",
+       "速率与加速度都最大",
+       "仅凭位置无法作出判断"
+     ],
+     "answer": 0,
+     "why": "平衡位置处位移为零，因此 a=−ω²x=0；机械能守恒时速度大小最大。"
+   },
+   {
+     "id": "p11",
+     "topic": "分析力学",
+     "model": "拉格朗日方程",
+     "question": "建立拉格朗日力学模型时，哪种做法最符合其基本思路？",
+     "options": [
+       "定义拉格朗日量并对广义坐标使用欧拉—拉格朗日方程",
+       "所有问题都必须先拆成直角坐标下的每个力",
+       "无需说明约束或系统自由度",
+       "该方法只适用于没有势能的自由粒子"
+     ],
+     "answer": 0,
+     "why": "拉格朗日方法以广义坐标和拉格朗日量表达动力学，适当选择坐标可以更自然地处理约束。"
+   },
+   {
+     "id": "p12",
+     "topic": "芯片与半导体器件设计",
+     "model": "理想二极管方程",
+     "question": "在理想二极管模型的正向偏置区，电压增加通常使电流出现什么变化？",
+     "options": [
+       "电流必定线性增加",
+       "电流必定不变",
+       "电流呈强烈的指数型增长趋势",
+       "带隙立即变为零"
+     ],
+     "answer": 2,
+     "why": "理想二极管方程给出电流对正向电压的指数依赖。真实器件还需考虑串联电阻、复合、温升等修正。"
+   }
+ ],
+ "applications": [
+   {
+     "id": "braking",
+     "title": "汽车刹车距离",
+     "level": "初中物理",
+     "model": "匀减速运动与能量",
+     "question": "车速提高后，刹车距离为何显著增加？",
+     "formula": "d=\\frac{v_0^2}{2|a|}",
+     "factors": [
+       {
+         "name": "初速度",
+         "value": 60,
+         "min": 20,
+         "max": 120,
+         "unit": "km/h"
+       },
+       {
+         "name": "减速度",
+         "value": 6,
+         "min": 2,
+         "max": 10,
+         "unit": "m/s²"
+       }
+     ],
+     "explain": "在减速度近似恒定时，刹车距离与初速度平方成正比，与减速度大小成反比。该模型不包含驾驶员反应距离。"
+   },
+   {
+     "id": "led",
+     "title": "LED 发光效率",
+     "level": "半导体与光电工程",
+     "model": "载流子复合与光提取",
+     "question": "为什么材料内部高效发光不一定意味着器件外部效率高？",
+     "formula": "\\eta_{EQE}=\\eta_{inj}\\eta_{rad}\\eta_{out}",
+     "factors": [
+       {
+         "name": "注入效率",
+         "value": 90,
+         "min": 10,
+         "max": 100,
+         "unit": "%"
+       },
+       {
+         "name": "辐射复合效率",
+         "value": 80,
+         "min": 10,
+         "max": 100,
+         "unit": "%"
+       },
+       {
+         "name": "光提取效率",
+         "value": 30,
+         "min": 5,
+         "max": 80,
+         "unit": "%"
+       }
+     ],
+     "explain": "简化模型中，外量子效率受载流子注入、辐射复合和光提取共同限制。真实器件还可能受电流依赖、光学损耗和热效应影响。"
+   },
+   {
+     "id": "solar",
+     "title": "太阳能电池",
+     "level": "新能源",
+     "model": "能量转换效率",
+     "question": "入射功率、开路电压、短路电流与填充因子如何影响输出？",
+     "formula": "\\eta=\\frac{V_{OC}I_{SC}FF}{P_{in}}",
+     "factors": [
+       {
+         "name": "开路电压",
+         "value": 0.7,
+         "min": 0.2,
+         "max": 1.2,
+         "unit": "V"
+       },
+       {
+         "name": "短路电流",
+         "value": 30,
+         "min": 5,
+         "max": 50,
+         "unit": "mA/cm²"
+       },
+       {
+         "name": "填充因子",
+         "value": 75,
+         "min": 30,
+         "max": 90,
+         "unit": "%"
+       }
+     ],
+     "explain": "该式给出常用的电池效率估算。比较时必须保持光谱、照度、有效面积与温度条件一致。"
+   },
+   {
+     "id": "satellite",
+     "title": "卫星轨道",
+     "level": "高中物理",
+     "model": "万有引力提供向心力",
+     "question": "圆轨道卫星的轨道半径变化时，速度如何变化？",
+     "formula": "v=\\sqrt{\\frac{GM}{r}}",
+     "factors": [
+       {
+         "name": "轨道半径",
+         "value": 7000,
+         "min": 6500,
+         "max": 42000,
+         "unit": "km"
+       }
+     ],
+     "explain": "在理想二体圆轨道模型中，轨道半径越大，轨道速度越小；但轨道能量更高。椭圆轨道需要使用更一般的轨道关系。"
+   }
+ ],
+ "relationTypes": [
+   "先修",
+   "推导",
+   "等价",
+   "特例",
+   "对比",
+   "互补",
+   "应用"
+ ]
+}</script>
+<script>
+(function(){
+'use strict';
+const DATA=JSON.parse(document.getElementById('engine-data').textContent);
+const nodes=DATA.nodes,levels=DATA.levels,practiceItems=DATA.practiceItems,applications=DATA.applications,relationTypes=DATA.relationTypes;
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+const STORE_KEY='physics-cognition-engine-v1';
+const defaults={modelProgress:{},causalClarity:{},trail:[],customLinks:[],appLog:[],research:{},selectedNode:'motion',selectedApp:0,selectedResearchTopic:'物质的本质',sound:false,aiEndpoint:'',cognition:{selected:'experience',timeline:'现在',knowledgeId:'motion',records:{}}};
+let state=loadState(),activeView='home',selectedNode=findNode(state.selectedNode),graphSimulation=null,graphNodes=[],graphLinks=[],currentPracticeIndex=0,practiceChainSelected=null,practicePassed=false,answerSelected=null,learnStep=0,diagnosisAnswer=null,reconstruction='',feynmanText='',coachReply='',customDrawn=false,currentAppIndex=state.selectedApp||0,appStep=0,appRecall='',appExplain='',appFactors={},appCanvasReady=false,researchTopic=state.selectedResearchTopic||'物质的本质',sympy=null,sympyLoading=false;
+const topicDefs=[{name:'物质的本质',desc:'原子结构、量子场论、标准模型、暗物质',phen:'宏观物质为何具有稳定结构和不同性质？'},{name:'宇宙的起源',desc:'大爆炸、暴胀、引力波、黑洞',phen:'宇宙膨胀史如何被观测证据约束？'},{name:'生命的规律',desc:'生物物理、DNA 力学、神经网络动力学',phen:'复杂生命系统中如何出现稳定的集体行为？'},{name:'未来的技术',desc:'量子计算、拓扑材料、聚变、纳米技术',phen:'如何把某种物理性质转化为可靠的器件功能？'}];
+const levelColors={1:'#4e8fc9',2:'#70ad55',3:'#dc9c4a',4:'#9582d0',5:'#d57691'};
+function findNode(id){return nodes.find(n=>n.id===id)||nodes[0]}
+function loadState(){try{const raw=localStorage.getItem(STORE_KEY);if(!raw)return structuredClone(defaults);const parsed=JSON.parse(raw);return {...structuredClone(defaults),...parsed,cognition:{...structuredClone(defaults.cognition),...(parsed.cognition||{}),records:{...(parsed.cognition?.records||{})}}}}catch(e){return structuredClone(defaults)}}
+function saveState(){try{localStorage.setItem(STORE_KEY,JSON.stringify(state));}catch(e){notify('浏览器没有允许写入本地存储；本次记录可能不会保留。')};refreshStats()}
+function notify(msg){const el=$('#toast');el.textContent=msg;el.hidden=false;clearTimeout(notify._t);notify._t=setTimeout(()=>el.hidden=true,3400)}
+function recordTrail(id,action){const n=findNode(id);state.trail.unshift({id,name:n.name,action:action||'访问知识点',at:Date.now()});state.trail=state.trail.slice(0,80);saveState();renderTrail()}
+function pct(v){return Math.round(v||0)+'%'}
+function avg(obj){return nodes.length?nodes.reduce((s,n)=>s+(obj[n.id]||0),0)/nodes.length:0}
+function refreshStats(){const p=avg(state.modelProgress),c=avg(state.causalClarity);$('#statProgress').textContent=pct(p);$('#statCausal').textContent=pct(c);$('#statTrail').textContent=state.trail.length;$('#statNodes').textContent=nodes.length;$('#sideProgress').style.width=p+'%';$('#sideStat').textContent=pct(p)}
+function escapeHTML(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function mathTypeset(el){if(window.MathJax&&MathJax.typesetPromise)MathJax.typesetPromise([el]).catch(()=>{});}
+function go(view){activeView=view;$$('.view').forEach(el=>el.classList.toggle('active',el.id==='view-'+view));$$('#navigation button').forEach(b=>b.classList.toggle('active',b.dataset.view===view));$('#crumbTitle').textContent=({home:'总览',cognition:'学习的本质',map:'知识地图',learn:'物理学习器',practice:'物理做题器',applications:'物理应用器',research:'物理科研器',settings:'设置与数据'})[view]||'总览';$('#sidebar').classList.remove('open');if(view==='cognition')renderCognition();if(view==='map'){renderMapFilters();renderGraph();renderNodeDetail()}if(view==='learn')renderLearn();if(view==='practice'&&!$('#practiceQuestion').textContent)renderPractice();if(view==='applications')renderApplication();if(view==='research')renderResearchTopics();if(view==='home'){renderTrail();renderReview()}window.scrollTo({top:0,behavior:'smooth'})}
+function setSelectedNode(id,action='选择知识点'){selectedNode=findNode(id);state.selectedNode=selectedNode.id;learnStep=0;diagnosisAnswer=null;reconstruction='';feynmanText='';coachReply='';saveState();recordTrail(selectedNode.id,action);renderNodeDetail();renderGraphSelection();renderLearn();if(activeView==='map')$('#nodeDetail').scrollIntoView({block:'nearest',behavior:'smooth'})}
+function nodeRelationList(n){const links=(n.relations||[]).map(r=>({target:r.target,type:r.type,custom:false})).concat(state.customLinks.filter(l=>l.from===n.id).map(l=>({target:l.to,type:l.type,custom:true}))).filter(r=>nodes.some(x=>x.id===r.target));return links}
+function renderTrail(){const host=$('#trailList');if(!host)return;if(!state.trail.length){host.innerHTML='<div class="empty">还没有轨迹记录。选择一个知识点，开始建立第一个模型。</div>';return}host.innerHTML=state.trail.slice(0,5).map(t=>`<div class="trail-item"><div class="trail-dot">⌘</div><div><strong>${escapeHTML(t.name)}</strong><small>${escapeHTML(t.action)} · ${new Date(t.at).toLocaleString()}</small></div><div class="mini-progress"><span style="width:${state.modelProgress[t.id]||0}%"></span></div></div>`).join('')}
+function renderReview(){const host=$('#reviewBox');if(!host)return;const now=Date.now();const due=state.appLog.filter(x=>x.dueAt<=now);const pending=state.appLog.filter(x=>x.dueAt>now).sort((a,b)=>a.dueAt-b.dueAt);if(due.length){host.innerHTML=`<h4>有 ${due.length} 个应用场景可以重新提取</h4><p>${due.map(x=>escapeHTML(x.title)).join('、')}。先不看资料，尝试回忆模型，再检查条件。</p><button class="btn btn-primary" data-go="applications">重新进入场景 ↗</button>`}else if(pending.length){const next=pending[0];host.innerHTML=`<h4>下次提取：${escapeHTML(next.title)}</h4><p>计划时间：${new Date(next.dueAt).toLocaleString()}。这是一个提醒，不会自动发送推送通知。</p><button class="btn btn-outline" data-go="applications">现在重新练习 ↗</button>`}else{host.innerHTML='<h4>还没有待复提取的应用</h4><p>完成任意一个应用闭环后，会记录 3 天后的复提取日期。</p><button class="btn btn-outline" data-go="applications">选择一个应用场景 ↗</button>'}}
+function renderMapFilters(){const groups=[...new Set(nodes.map(n=>n.group))].sort();const sel=$('#groupFilter'),cur=sel.value;sel.innerHTML='<option value="all">全部学科</option>'+groups.map(g=>`<option value="${escapeHTML(g)}">${escapeHTML(g)}</option>`).join('');if(groups.includes(cur))sel.value=cur;$('#levelsRow').innerHTML=levels.map(l=>`<div class="level-card"><span class="level-num">LAYER 0${l.id}</span><strong>${escapeHTML(l.name)}</strong><small>${escapeHTML(l.subtitle)}</small></div>`).join('');$('#learnLevelChips').innerHTML=levels.map(l=>`<button class="level-card" data-learn-level="${l.id}" style="text-align:left;cursor:pointer"><span class="level-num">LAYER 0${l.id}</span><strong>${escapeHTML(l.name)}</strong><small>${nodes.filter(n=>n.level===l.id).length} 个开放节点</small></button>`).join('')}
+function visibleNodes(){const query=($('#mapSearch').value||$('#globalSearch').value||'').trim().toLowerCase(),group=$('#groupFilter').value,level=$('#levelFilter').value;return nodes.filter(n=>(!query||`${n.name} ${n.group} ${n.description}`.toLowerCase().includes(query))&&(group==='all'||n.group===group)&&(level==='all'||String(n.level)===level))}
+function edgeData(){const e=[];nodes.forEach(n=>(n.relations||[]).forEach(r=>{if(nodes.some(x=>x.id===r.target))e.push({source:n.id,target:r.target,type:r.type})}));state.customLinks.forEach(r=>{if(nodes.some(x=>x.id===r.from)&&nodes.some(x=>x.id===r.to))e.push({source:r.from,target:r.to,type:r.type,custom:true})});const seen=new Set();return e.filter(x=>{const key=`${x.source.id||x.source}->${x.target.id||x.target}:${x.type}`;if(seen.has(key))return false;seen.add(key);return true})}
+function renderGraph(){const svg=window.d3&&window.d3.select('#knowledge-graph');if(!svg){$('#graphCount').textContent=nodes.length+' 个节点';return}const el=$('#knowledge-graph'),width=el.clientWidth||750,height=el.clientHeight||550;svg.attr('viewBox',`0 0 ${width} ${height}`).selectAll('*').remove();const visible=visibleNodes();$('#graphCount').textContent=visible.length+' 个节点';if(!visible.length){svg.append('text').attr('x',width/2).attr('y',height/2).attr('text-anchor','middle').attr('fill','#8da0b3').text('没有匹配的节点，请修改搜索条件。');return}const ids=new Set(visible.map(n=>n.id)),linkData=edgeData().filter(l=>ids.has(l.source.id||l.source)&&ids.has(l.target.id||l.target)).map(l=>({...l,source:l.source.id||l.source,target:l.target.id||l.target}));const defs=svg.append('defs');defs.append('marker').attr('id','arrow').attr('viewBox','0 -5 10 10').attr('refX',18).attr('refY',0).attr('markerWidth',5).attr('markerHeight',5).attr('orient','auto').append('path').attr('d','M0,-5L10,0L0,5').attr('fill','#b6c7d9');const root=svg.append('g');const zoom=d3.zoom().scaleExtent([.35,2.8]).on('zoom',ev=>root.attr('transform',ev.transform));svg.call(zoom);const links=root.append('g').attr('stroke','#b8c9da').attr('stroke-opacity',.6).selectAll('line').data(linkData).join('line').attr('stroke-width',d=>d.custom?2.2:1.15).attr('stroke-dasharray',d=>d.custom?'5 3':null).attr('marker-end','url(#arrow)');const nodesG=root.append('g').selectAll('g').data(visible,d=>d.id).join('g').attr('cursor','pointer').call(d3.drag().on('start',(ev,d)=>{if(!ev.active)graphSimulation.alphaTarget(.18).restart();d.fx=d.x;d.fy=d.y}).on('drag',(ev,d)=>{d.fx=ev.x;d.fy=ev.y}).on('end',(ev,d)=>{if(!ev.active)graphSimulation.alphaTarget(0);d.fx=null;d.fy=null}));nodesG.append('circle').attr('r',d=>d.id===selectedNode.id?13:10).attr('fill',d=>levelColors[d.level]||'#5e92c9').attr('stroke',d=>d.id===selectedNode.id?'#102b49':'white').attr('stroke-width',d=>d.id===selectedNode.id?3:2).attr('opacity',d=>d.id===selectedNode.id?1:.88);nodesG.append('text').attr('dy',24).attr('text-anchor','middle').attr('font-size',d=>d.id===selectedNode.id?11:9).attr('font-weight',d=>d.id===selectedNode.id?800:600).attr('fill',d=>d.id===selectedNode.id?'#173552':'#71859b').text(d=>d.name.length>8?d.name.slice(0,7)+'…':d.name);nodesG.on('click',(ev,d)=>{ev.stopPropagation();setSelectedNode(d.id,'在知识地图中选择')});nodesG.append('title').text(d=>`${d.name}\n${d.group}\n${d.description}`);const simNodes=visible.map(n=>({...n}));const simLinks=linkData.map(l=>({...l}));graphSimulation?.stop();graphSimulation=d3.forceSimulation(simNodes).force('link',d3.forceLink(simLinks).id(d=>d.id).distance(83).strength(.25)).force('charge',d3.forceManyBody().strength(-175)).force('center',d3.forceCenter(width/2,height/2)).force('collide',d3.forceCollide(24)).alphaDecay(.025).on('tick',()=>{links.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);nodesG.attr('transform',d=>`translate(${d.x},${d.y})`)});graphNodes=simNodes;graphLinks=simLinks;svg.on('click',()=>{});}
+function renderGraphSelection(){if(activeView==='map')renderGraph()}
+function renderNodeDetail(){const n=selectedNode;const prior=n.prerequisites.map(id=>findNode(id)).filter(x=>x.id!==n.id);const rel=nodeRelationList(n);const progress=state.modelProgress[n.id]||0;$('#nodeDetail').innerHTML=`<div class="panel-head"><div><h3>知识点详情</h3><p>概念、条件与迁移入口。</p></div><span class="node-level">L${n.level}</span></div><span class="pill">${escapeHTML(n.group)}</span><h2>${escapeHTML(n.name)}</h2><p class="detail-desc">${escapeHTML(n.description)}</p>${n.formula?`<div class="formula-box"><div class="formula-label">核心关系</div><div class="math">\[${n.formula}\]</div></div>`:''}<div class="detail-label">适用条件</div><ul class="bullet-list">${n.conditions.map(c=>`<li>${escapeHTML(c)}</li>`).join('')}</ul><div class="detail-label">先修线索（不锁定内容）</div><div class="pills">${prior.length?prior.map(x=>`<button class="tag" data-node="${x.id}">${escapeHTML(x.name)}</button>`).join(''):'<span>基础入口 · 暂无前置要求</span>'}</div><div class="detail-label">关系网络</div><div class="relation-mini">${rel.slice(0,7).map(r=>`<button data-node="${r.target}"><span>${escapeHTML(r.type)}${r.custom?' · 自定义':''}</span><b>${escapeHTML(findNode(r.target).name)}</b><span>↗</span></button>`).join('')||'<div class="fineprint">暂无关系；可在下方添加。</div>'}</div><div style="margin-top:18px"><div class="progress-head"><span>模型闭环进度</span><strong>${pct(progress)}</strong></div><div class="progress-track"><span style="width:${progress}%"></span></div><div class="fineprint">记录的是学习操作轨迹，不是客观能力分数。</div></div><div class="action-stack"><button class="btn btn-primary" id="nodeLearn">在学习器中重构 →</button><button class="btn btn-outline" id="nodeApply">寻找现实应用</button></div><div class="detail-label" style="margin-top:22px">添加自己的知识连接</div><label class="form-label" for="relationTarget">目标节点</label><select class="field" id="relationTarget">${nodes.filter(x=>x.id!==n.id).map(x=>`<option value="${x.id}">${escapeHTML(x.name)}</option>`).join('')}</select><label class="form-label" for="relationType">关系类型</label><select class="field" id="relationType">${relationTypes.map(r=>`<option>${r}</option>`).join('')}</select><button class="btn btn-blue" style="width:100%;margin-top:11px" id="addRelation">+ 添加连接</button>`;mathTypeset($('#nodeDetail'));$$('#nodeDetail [data-node]').forEach(b=>b.addEventListener('click',()=>setSelectedNode(b.dataset.node,'沿关系探索')));$('#nodeLearn').onclick=()=>{go('learn');learnStep=0;renderLearn()};$('#nodeApply').onclick=()=>{go('applications');const idx=applications.findIndex(a=>a.title.includes(n.name)||n.name.includes(a.title));if(idx>=0)currentAppIndex=idx;renderApplication()};$('#addRelation').onclick=()=>{const to=$('#relationTarget').value,type=$('#relationType').value;if(to===n.id)return notify('关系两端不能是同一个知识点。');state.customLinks.unshift({from:n.id,to,type});state.customLinks=state.customLinks.slice(0,120);state.causalClarity[n.id]=Math.min(100,(state.causalClarity[n.id]||0)+20);state.modelProgress[n.id]=Math.max(state.modelProgress[n.id]||0,100);saveState();notify(`已添加：${n.name} —${type}→ ${findNode(to).name}`);renderNodeDetail();renderGraph();recordTrail(n.id,'添加自定义因果连接')}}
+function updateProgress(step){const p=Math.min(100,step*25);state.modelProgress[selectedNode.id]=Math.max(state.modelProgress[selectedNode.id]||0,p);saveState();refreshStats()}
+const learnTitles=['诊断前测','掩蔽重构','费曼对抗','因果图谱'];
+function renderLearn(){if(!selectedNode)return;$('#learnNodeTitle').textContent=selectedNode.name;$('#learnNodeSub').textContent=`${selectedNode.group} · 第 ${selectedNode.level} 层（仍可访问全部知识）`;$('#learnStatus').textContent=`步骤 ${learnStep+1} / 4`;$('#learnStepper').innerHTML=learnTitles.map((x,i)=>`<button class="step-chip ${learnStep===i?'active':''} ${learnStep>i?'done':''}" data-learn-step="${i}"><span class="num">${learnStep>i?'✓':i+1}</span><strong>${x}</strong><small>${['先暴露已有模型','遮蔽后主动重构','用自己的话解释','连接因果关系'][i]}</small></button>`).join('');$$('[data-learn-step]').forEach(b=>b.onclick=()=>{if(+b.dataset.learnStep<=learnStep){learnStep=+b.dataset.learnStep;renderLearn()}else if(+b.dataset.learnStep===learnStep+1)notify('请完成当前认知操作后进入下一步。')});const n=selectedNode;const stage=$('#learnStage');if(learnStep===0){const diagnostic=makeDiagnostic(n);stage.innerHTML=`<div class="eyebrow">01 · DIAGNOSTIC</div><h3 class="stage-title">先暴露已有的解释</h3><p class="stage-desc">不必追求一开始就正确。选择你认为最能解释现象的说法，然后检查自己依赖了什么假设。</p><div class="question-box"><small>诊断前测 · ${escapeHTML(n.group)}</small><p>${escapeHTML(n.phenomenon||'你会如何用这个知识点预测一个现象？')}</p><p style="margin-top:12px;font-size:11px;color:#69819a">${escapeHTML(diagnostic.q)}</p></div><div class="choice-list">${diagnostic.opts.map((o,i)=>`<button class="choice ${diagnosisAnswer===i?'selected':''}" data-diagnosis="${i}"><span class="choice-mark">${String.fromCharCode(65+i)}</span><span>${escapeHTML(o)}</span></button>`).join('')}</div><div id="diagnosisFeedback"></div><div class="stage-actions"><span class="fineprint">诊断用于定位疑问，不会关闭任何知识内容。</span><button class="btn btn-primary" id="continueDiagnosis" ${diagnosisAnswer===null?'disabled':''}>进入原理与条件 →</button></div>`;$$('[data-diagnosis]').forEach(b=>b.onclick=()=>{diagnosisAnswer=+b.dataset.diagnosis;$$('[data-diagnosis]').forEach(x=>x.classList.toggle('selected',x===b));$('#continueDiagnosis').disabled=false;$('#diagnosisFeedback').innerHTML=`<div class="feedback ${diagnosisAnswer===diagnostic.correct?'good':'warn'}">${diagnosisAnswer===diagnostic.correct?'这个解释与当前模型相符。继续检验它的适用边界。':'这个选择暴露了值得检验的假设。带着这个差异继续学习。'} ${escapeHTML(diagnostic.why)}</div>`});$('#continueDiagnosis').onclick=()=>{if(diagnosisAnswer===null)return;learnStep=1;updateProgress(1);recordTrail(n.id,'完成诊断前测');renderLearn()}}
+else if(learnStep===1){stage.innerHTML=`<div class="eyebrow">02 · RECONSTRUCT</div><h3 class="stage-title">把模型拆成条件、关系与预测</h3><p class="stage-desc">不要只记住公式。先明确变量代表什么、规律成立的边界，以及它能预测什么结果。</p><div class="subpanel"><h4>核心关系</h4><div class="math" style="font-size:17px">\[${n.formula||'\text{现象} \rightarrow \text{模型} \rightarrow \text{预测}'}\]</div><p>${escapeHTML(n.description)}</p></div><div class="two-col" style="margin-top:12px"><div class="subpanel"><h4>适用条件</h4><ul class="bullet-list">${n.conditions.map(c=>`<li>${escapeHTML(c)}</li>`).join('')}</ul></div><div class="subpanel"><h4>常见误区</h4><ul class="bullet-list">${n.misconceptions.map(c=>`<li>${escapeHTML(c)}</li>`).join('')}</ul></div></div><div class="question-box"><small>掩蔽即将开始</small><p>读完后，请用自己的语言写出适用条件。下一步将不再展示上方原理。</p></div><div class="stage-actions"><button class="btn btn-outline" id="backLearn">← 回到诊断</button><button class="btn btn-primary" id="hideModel">遮蔽原理并重构 →</button></div>`;mathTypeset(stage);$('#backLearn').onclick=()=>{learnStep=0;renderLearn()};$('#hideModel').onclick=()=>{learnStep=2;reconstruction='';feynmanText='';coachReply='';updateProgress(2);recordTrail(n.id,'阅读模型并开始遮蔽重构');renderLearn()}}
+else if(learnStep===2){stage.innerHTML=`<div class="eyebrow">02 · RETRIEVAL BEFORE REREADING</div><h3 class="stage-title">现在把刚才的模型从脑中重建出来</h3><p class="stage-desc">上一步的公式和说明已暂时隐藏。不要返回查看，先独立写出你记得的条件与因果关系。</p><div class="question-box"><small>重构提示</small><p>请写出“在什么条件下，改变哪个量，会通过什么机制，导致什么结果？”</p></div><label class="form-label" for="reconstruction">用自己的话复述适用条件与推理链</label><textarea class="textarea" id="reconstruction" placeholder="我认为这个模型成立需要……因为……所以预测……">${escapeHTML(reconstruction)}</textarea><div class="sketch-wrap"><div class="sketch-head"><strong>画出结构 / 受力图 / 轨迹图（可选但推荐）</strong><button id="clearLearnSketch">清空</button></div><canvas class="sketch" id="learnSketch"></canvas></div><div class="stage-actions"><button class="btn btn-outline" id="revealModel">查看原理作为提示</button><button class="btn btn-primary" id="continueReconstruct" ${reconstruction.trim().length<8?'disabled':''}>进入费曼解释 →</button></div><div class="fineprint">浏览器只检查你是否提交了重构说明，不会自动判断物理推导是否正确。图像可帮助你外显想法，当前版本不包含自动视觉识别。</div>`;$('#reconstruction').oninput=e=>{reconstruction=e.target.value;$('#continueReconstruct').disabled=reconstruction.trim().length<8};setupCanvas($('#learnSketch'));$('#clearLearnSketch').onclick=()=>clearCanvas($('#learnSketch'));$('#revealModel').onclick=()=>{const n=selectedNode;notify(`提示：${n.description} 适用条件：${n.conditions.join('；')}`)};$('#continueReconstruct').onclick=()=>{reconstruction=$('#reconstruction').value;learnStep=3;updateProgress(3);recordTrail(n.id,'完成主动重构');renderLearn()}}
+else {stage.innerHTML=`<div class="eyebrow">03 · FEYNMAN DIALOGUE + 04 · CAUSAL MAP</div><h3 class="stage-title">把它讲给一个“小白”听</h3><p class="stage-desc">尝试用类比、变量和可检验预测解释，而不是重复定义。系统会提出一个追问，帮助你检查逻辑是否闭合。</p><label class="form-label" for="feynmanText">你的解释</label><textarea class="textarea" id="feynmanText" placeholder="如果我要向第一次接触这个概念的人解释，我会说……">${escapeHTML(feynmanText)}</textarea><div style="display:flex;justify-content:flex-start;gap:8px;flex-wrap:wrap;margin-top:9px"><button class="btn btn-outline" id="voiceBtn">🎙 语音输入</button><button class="btn btn-outline" id="askCoach">向小白说明并接受追问 ↗</button></div><div id="coachReply">${coachReply?`<div class="ai-reply">${escapeHTML(coachReply)}</div>`:''}</div><div class="detail-label">第四步：把这个知识点连接到另一个节点</div><p class="stage-desc">选择目标和关系类型。关系方向表示你想记录的知识联系，不自动代表严格数学证明。</p><div class="two-col"><div><label class="form-label" for="learnRelationTarget">目标知识点</label><select class="field" id="learnRelationTarget">${nodes.filter(x=>x.id!==selectedNode.id).map(x=>`<option value="${x.id}">${escapeHTML(x.name)}</option>`).join('')}</select></div><div><label class="form-label" for="learnRelationType">关系类型</label><select class="field" id="learnRelationType">${relationTypes.map(r=>`<option>${r}</option>`).join('')}</select></div></div><div class="stage-actions"><button class="btn btn-outline" id="backReconstruct">← 回到重构</button><button class="btn btn-primary" id="completeLearn">添加连接并完成闭环 ✓</button></div><div class="fineprint">如暂时不确定关系，可以添加“对比”或“互补”，并在之后通过推导继续修正。</div>`;$('#feynmanText').oninput=e=>feynmanText=e.target.value;$('#askCoach').onclick=askFeynmanCoach;$('#backReconstruct').onclick=()=>{learnStep=2;renderLearn()};$('#voiceBtn').onclick=()=>startVoiceInput($('#feynmanText'));$('#completeLearn').onclick=()=>{feynmanText=$('#feynmanText').value;const to=$('#learnRelationTarget').value,type=$('#learnRelationType').value;if(!feynmanText.trim())return notify('请先尝试用自己的话解释一次。');if(to&&to!==selectedNode.id){state.customLinks.unshift({from:selectedNode.id,to,type});state.customLinks=state.customLinks.slice(0,120);state.causalClarity[selectedNode.id]=Math.min(100,(state.causalClarity[selectedNode.id]||0)+25)}state.modelProgress[selectedNode.id]=100;saveState();recordTrail(selectedNode.id,'完成四步学习闭环');playTone();notify('已记录本次学习闭环。模型进度是操作记录，可继续验证关系是否成立。');learnStep=0;diagnosisAnswer=null;renderLearn();renderNodeDetail()}}
+const concept=$('#learnConcept');concept.innerHTML=`<div class="panel-head"><div><h3>模型观察卡</h3><p>学习不是堆叠定义，而是组织条件与预测。</p></div><span class="pill">${escapeHTML(n.group)}</span></div><h2 class="detail-title" style="font-size:21px;margin:10px 0">${escapeHTML(n.name)}</h2><p class="detail-desc">${escapeHTML(n.phenomenon||n.description)}</p><div class="formula-box"><div class="formula-label">核心关系</div><div class="math">\[${n.formula||'\text{现象} \rightarrow \text{模型}'}\]</div></div><div class="detail-label">条件决定边界</div><ul class="bullet-list">${n.conditions.map(c=>`<li>${escapeHTML(c)}</li>`).join('')}</ul><div class="detail-label">让模型可检验</div><div class="subpanel"><h4>提出一个反事实</h4><p>如果改变一个关键条件，哪条因果链会发生变化？你能想到什么观测或反例来区别两种解释？</p></div><div style="margin-top:18px"><div class="progress-head"><span>当前模型闭环记录</span><strong>${pct(state.modelProgress[n.id]||0)}</strong></div><div class="progress-track"><span style="width:${state.modelProgress[n.id]||0}%"></span></div></div><div class="detail-label">快速切换节点</div><select class="field" id="learnNodeSelect">${nodes.map(x=>`<option value="${x.id}" ${x.id===n.id?'selected':''}>${escapeHTML(x.name)} · ${escapeHTML(x.group)}</option>`).join('')}</select><button class="btn btn-outline" style="width:100%;margin-top:10px" id="openNodeMap">在知识地图查看关系 ↗</button>`;mathTypeset(concept);$('#learnNodeSelect').onchange=e=>{setSelectedNode(e.target.value,'学习器切换知识点');learnStep=0;diagnosisAnswer=null;renderLearn()};$('#openNodeMap').onclick=()=>go('map')}
+function makeDiagnostic(n){let q='哪一项最能说明该规律的适用边界？';let opts=[n.conditions[0]||n.description,n.misconceptions[0]||'不需要检查边界条件。','只要公式熟悉，变量含义可以忽略。','只根据最终结果判断模型。'];let correct=0;return {q,opts,correct,why:'继续确认变量定义、系统边界和模型假设。'}}
+async function askFeynmanCoach(){const val=$('#feynmanText')?.value||feynmanText;if(!val.trim())return notify('先写下自己的解释，再接受追问。');feynmanText=val;const host=$('#coachReply');host.innerHTML='<div class="ai-reply">正在组织追问…</div>';const endpoint=state.aiEndpoint;let reply='';if(endpoint){try{const r=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({topic:selectedNode.name,explanation:val,level:selectedNode.level,mode:'feynman'})});if(!r.ok)throw new Error('API '+r.status);const d=await r.json();reply=d.question||d.reply||''}catch(e){reply='外部接口不可用，以下改用本地追问：';}}if(!reply){const qs=[`你的解释里，哪一个条件是不可删除的？如果删掉它，预测会如何改变？`,`你说明的是两个现象同时出现，还是一个变量通过明确机制导致另一个变量改变？`,`能否构造一个反例，让你当前的解释给出错误预测？`,`如果把系统的尺度扩大或缩小，你的假设哪些还成立？`,`你是否区分了定义、近似和由模型推出的结论？`];reply+=(qs[(val.length+selectedNode.name.length)%qs.length]);}host.innerHTML=`<div class="ai-reply"><b>小白追问</b><br/>${escapeHTML(reply)}</div>`;coachReply=reply;state.modelProgress[selectedNode.id]=Math.max(state.modelProgress[selectedNode.id]||0,75);saveState()}
+function startVoiceInput(textarea){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){notify('当前浏览器没有提供语音识别。可在支持的浏览器中启用麦克风权限，或继续输入文字。');return}const rec=new SR();rec.lang='zh-CN';rec.interimResults=true;rec.onresult=e=>{textarea.value=Array.from(e.results).map(r=>r[0].transcript).join('');textarea.dispatchEvent(new Event('input'))};rec.onerror=()=>notify('语音输入未能启动，请检查麦克风权限。');rec.start();notify('正在聆听；完成后请检查识别结果。')}
+const practiceOrder=[0,6,3,2,9,7,1,5,8,10,4,11];
+const chainAnswers={'p1':'先用位移变化量除以时间间隔定义平均速度','p2':'速度矢量不变 → 加速度为零 → 合力为零','p3':'电阻不变且欧姆定律适用 → I=U/R','p4':'位置对时间的瞬时变化率定义为速度','p5':'量子态是可观测量的本征态 → 理想测量结果为对应本征值','p6':'施主掺杂改变载流子统计 → 电子浓度通常上升','p7':'引力提供向心力 → GMm/r²=mv²/r','p8':'摩擦做功 → 机械能转化为内能等形式','p9':'感应电动势由磁通量的时间变化率决定','p10':'简谐运动 a=−ω²x → 平衡位置处加速度为零','p11':'建立拉格朗日量 → 对广义坐标应用欧拉—拉格朗日方程','p12':'理想二极管方程 → 正向电流随电压呈指数增长'};
+const topicNodeMap={'运动与速度':'motion','牛顿力学':'newton','电路':'circuits','微积分':'calculus','量子力学':'quantum','半导体物理':'semiconductor','万有引力':'gravity','功与能量':'work-energy','电磁学与电动力学':'electromagnetism','振动与波动':'waves','分析力学':'lagrangian','芯片与半导体器件设计':'chip-design'};
+function currentPractice(){return practiceItems[practiceOrder[currentPracticeIndex%practiceOrder.length]]}
+function renderPractice(){const p=currentPractice();practiceChainSelected=null;practicePassed=false;answerSelected=null;$('#practiceTopic').textContent=p.topic;$('#practiceCount').textContent=`交错序列 ${currentPracticeIndex+1} / ${practiceItems.length}`;$('#practiceQuestion').textContent=p.question;$('#practiceHint').textContent='检查系统边界、适用条件，以及题目真正描述的变化。';$('#practiceFeedback').innerHTML='';$('#answerStage').style.display='none';$('#practiceContinue').disabled=true;const right=chainAnswers[p.id]||`选择能够从已知条件推导目标量的模型：${p.model}`;const distractors=['先套用最熟悉的公式，不检查模型的适用条件','把答案数值的大小当成原因，而不分析变量关系'];let opts=[right,...distractors];const shift=currentPracticeIndex%opts.length;opts=opts.slice(shift).concat(opts.slice(0,shift));$('#chainOptions').innerHTML=opts.map((o,i)=>`<button class="choice" data-chain="${i}"><span class="choice-mark">${String.fromCharCode(65+i)}</span><span>${escapeHTML(o)}</span></button>`).join('');$$('[data-chain]').forEach(b=>b.onclick=()=>{const idx=+b.dataset.chain;practiceChainSelected=opts[idx];$$('[data-chain]').forEach(x=>x.classList.toggle('selected',x===b));if(practiceChainSelected===right){practicePassed=true;$('#practiceContinue').disabled=false;$('#practiceFeedback').innerHTML='<div class="feedback good">因果链与当前题目的核心模型相符。现在继续检验它能否推出正确结论。</div>'}else{practicePassed=false;$('#practiceContinue').disabled=true;$('#practiceFeedback').innerHTML='<div class="feedback warn">这条路径尚未建立从已知量到所求量的有效联系。请核对定义、系统边界和适用条件，再重新选择。</div>'}});$('#practiceContinue').onclick=()=>{if(!practicePassed)return;$('#answerStage').style.display='block';$('#answerOptions').innerHTML=p.options.map((o,i)=>`<button class="choice" data-answer="${i}"><span class="choice-mark">${String.fromCharCode(65+i)}</span><span>${escapeHTML(o)}</span></button>`).join('');$('#answerFeedback').innerHTML='';$$('[data-answer]').forEach(b=>b.onclick=()=>{answerSelected=+b.dataset.answer;$$('[data-answer]').forEach(x=>x.classList.remove('selected','correct'));b.classList.add('selected');const correct=answerSelected===p.answer;if(correct)b.classList.add('correct');$('#answerFeedback').innerHTML=`<div class="feedback ${correct?'good':'warn'}"><b>${correct?'推理与结果相符。':'结果与当前模型不一致。'}</b><br/>${escapeHTML(p.why)}</div>`;const id=topicNodeMap[p.topic]||'motion';if(correct){state.causalClarity[id]=Math.min(100,(state.causalClarity[id]||0)+8);state.modelProgress[id]=Math.max(state.modelProgress[id]||0,50);saveState()}});$('#answerStage').scrollIntoView({behavior:'smooth',block:'start'})};$('#practiceRetry').onclick=()=>{renderPractice()};$('#nextPractice').onclick=()=>{currentPracticeIndex=(currentPracticeIndex+1)%practiceOrder.length;renderPractice();$('#practiceQuestion').scrollIntoView({behavior:'smooth',block:'nearest'})};$('#practiceExplain').onclick=()=>notify(`适用条件提示：${findNode(topicNodeMap[p.topic]||'motion').conditions.join('；')}`)}
+function setupCanvas(canvas){if(!canvas||canvas.dataset.ready)return;canvas.dataset.ready='1';const ctx=canvas.getContext('2d');let drawing=false,last=null;function resize(){const rect=canvas.getBoundingClientRect(),dpr=window.devicePixelRatio||1;const old=document.createElement('canvas');old.width=canvas.width;old.height=canvas.height;old.getContext('2d').drawImage(canvas,0,0);canvas.width=Math.max(1,Math.round(rect.width*dpr));canvas.height=Math.max(1,Math.round(rect.height*dpr));ctx.setTransform(dpr,0,0,dpr,0,0);ctx.lineCap='round';ctx.lineJoin='round';ctx.strokeStyle='#285f97';ctx.lineWidth=2;try{ctx.drawImage(old,0,0,old.width,old.height,0,0,rect.width,rect.height)}catch(e){}}resize();new ResizeObserver(resize).observe(canvas);function pos(e){const r=canvas.getBoundingClientRect();return {x:e.clientX-r.left,y:e.clientY-r.top}}canvas.addEventListener('pointerdown',e=>{drawing=true;last=pos(e);canvas.setPointerCapture(e.pointerId)});canvas.addEventListener('pointermove',e=>{if(!drawing)return;const p=pos(e);ctx.beginPath();ctx.moveTo(last.x,last.y);ctx.lineTo(p.x,p.y);ctx.stroke();last=p;customDrawn=true});function end(){drawing=false;last=null}canvas.addEventListener('pointerup',end);canvas.addEventListener('pointercancel',end)}
+function clearCanvas(canvas){if(!canvas)return;canvas.getContext('2d').clearRect(0,0,canvas.width,canvas.height)}
+function playTone(){if(!state.sound)return;try{const C=window.AudioContext||window.webkitAudioContext;if(!C)return;const c=new C(),o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.value=660;g.gain.setValueAtTime(.0001,c.currentTime);g.gain.exponentialRampToValueAtTime(.04,c.currentTime+.015);g.gain.exponentialRampToValueAtTime(.0001,c.currentTime+.12);o.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+.13);o.onended=()=>c.close()}catch(e){}}
+function renderApplication(){const app=applications[currentAppIndex]||applications[0];$('#appList').innerHTML=applications.map((x,i)=>`<button class="app-item ${i===currentAppIndex?'active':''}" data-app="${i}"><span class="app-symbol">${['↘','✦','☼','◉'][i]||'ϟ'}</span><span><strong>${escapeHTML(x.title)}</strong><small>${escapeHTML(x.level)}</small></span></button>`).join('');$$('[data-app]').forEach(b=>b.onclick=()=>{currentAppIndex=+b.dataset.app;state.selectedApp=currentAppIndex;saveState();appStep=0;appRecall='';appExplain='';renderApplication()});const factorEls=app.factors.map((f,i)=>{const key=app.id+':'+f.name;const val=appFactors[key]??f.value;return `<div class="range-item"><div class="range-head"><label for="factor-${i}">${escapeHTML(f.name)}</label><strong id="factor-val-${i}">${val} ${escapeHTML(f.unit)}</strong></div><input type="range" id="factor-${i}" min="${f.min}" max="${f.max}" step="${(f.max-f.min)>100?100:(f.max-f.min)>20?1:.01}" value="${val}" data-factor="${escapeHTML(f.name)}"/><div class="range-bound"><span>${f.min} ${escapeHTML(f.unit)}</span><span>${f.max} ${escapeHTML(f.unit)}</span></div></div>`}).join('');const host=$('#appDetail');host.innerHTML=`<div class="app-title-row"><div><span class="pill">${escapeHTML(app.level)}</span><h2 style="font-size:22px;margin:11px 0 8px">${escapeHTML(app.title)}</h2><p class="detail-desc">${escapeHTML(app.question)}</p></div></div><div class="formula-box"><div class="formula-label">模型关系</div><div class="math">\[${app.formula}\]</div></div><div class="question-box"><small>建模前先说出来</small><p>你认为最关键的因果链是什么？哪些条件被近似或暂时忽略？</p><label class="form-label" for="appRecall">不看资料，先回忆模型</label><textarea class="textarea" id="appRecall" placeholder="变量……规律……适用条件……">${escapeHTML(appRecall)}</textarea><label class="form-label" for="appExplain">解释为什么变量会影响结果</label><textarea class="textarea" id="appExplain" placeholder="当……改变时，通过……机制，导致……">${escapeHTML(appExplain)}</textarea></div><div class="section-head" style="margin-top:23px"><div><h2 style="font-size:15px">参数敏感性实验</h2><p>调整变量，观察模型输出如何改变。数值为理想化模型估算。</p></div><span class="pill orange">可调参数</span></div>${factorEls}<div class="metric-card"><small>模型输出 · 随参数实时更新</small><strong id="appOutput">—</strong><p id="appInterpretation">${escapeHTML(app.explain)}</p></div><svg class="plot" id="appPlot" viewBox="0 0 560 180" role="img" aria-label="参数敏感性示意图"></svg><div class="stage-actions"><button class="btn btn-outline" id="appReset">恢复默认参数</button><button class="btn btn-primary" id="appComplete">保存应用闭环并安排复提取 ↗</button></div><div id="appSaveFeedback"></div><div class="fineprint">真实系统还可能受到温度、材料参数、几何条件、噪声和非理想效应影响。该示例用于练习建模，不代替工程设计或实验测量。</div>`;mathTypeset(host);$$('[data-factor]').forEach(input=>input.addEventListener('input',()=>{const f=app.factors.find(x=>x.name===input.dataset.factor);appFactors[app.id+':'+f.name]=+input.value;$('#factor-val-'+input.id.split('-')[1]).textContent=input.value+' '+f.unit;updateAppOutput(app);drawAppPlot(app)}));$('#appRecall').oninput=e=>appRecall=e.target.value;$('#appExplain').oninput=e=>appExplain=e.target.value;$('#appReset').onclick=()=>{app.factors.forEach(f=>delete appFactors[app.id+':'+f.name]);renderApplication()};$('#appComplete').onclick=()=>{if(!appRecall.trim()||!appExplain.trim())return notify('先填写模型回忆和因果解释，再保存本次闭环。');const log={id:app.id,title:app.title,completedAt:Date.now(),dueAt:Date.now()+3*24*60*60*1000,recall:appRecall,explanation:appExplain};state.appLog=state.appLog.filter(x=>x.id!==app.id);state.appLog.push(log);state.modelProgress[(Object.keys(topicNodeMap).find(k=>app.title.includes(k))&&topicNodeMap[Object.keys(topicNodeMap).find(k=>app.title.includes(k))])||({'braking':'motion','led':'semiconductor','solar':'semiconductor','satellite':'gravity'}[app.id])]=Math.max(60,state.modelProgress[({'braking':'motion','led':'semiconductor','solar':'semiconductor','satellite':'gravity'}[app.id])]||0);saveState();$('#appSaveFeedback').innerHTML=`<div class="feedback good">已保存这次应用闭环。计划复提取：${new Date(log.dueAt).toLocaleString()}。这是本地提醒，不会在网页关闭后发送系统推送。</div>`;renderReview();notify('应用闭环已保存。三天后可以回到此场景重新提取模型。')};updateAppOutput(app);drawAppPlot(app)}
+function appVal(app,name){const f=app.factors.find(x=>x.name===name);return appFactors[app.id+':'+name]??f.value}
+function calcApp(app){const val=name=>appVal(app,name);if(app.id==='braking'){const v=val('初速度')/3.6,a=val('减速度');return {value:(v*v/(2*a)).toFixed(1)+' m',desc:`理想刹车距离约为 ${ (v*v/(2*a)).toFixed(1)} m，不含驾驶员反应距离。速度变为原来的 2 倍时，距离约变为 4 倍。`}}if(app.id==='led'){const v=val('注入效率')/100*val('辐射复合效率')/100*val('光提取效率')/100*100;return {value:v.toFixed(2)+'%',desc:`简化外量子效率为三种效率之积。当前最低的效率因子会限制总输出；优化其中一个因子后的收益取决于其他因子。`}}if(app.id==='solar'){const v=val('开路电压')*val('短路电流')*(val('填充因子')/100);return {value:v.toFixed(2)+'%',desc:`在入射功率密度约为 100 mW/cm² 时，近似效率为 Voc × Jsc × FF / Pin。注意实验报告必须注明照明、面积与温度条件。`}}if(app.id==='satellite'){const r=val('轨道半径')*1000,v=Math.sqrt(3.986004418e14/r)/1000;return {value:v.toFixed(2)+' km/s',desc:`理想二体圆轨道速度约为 √(GM/r)。轨道半径增加，轨道速度下降；但轨道总机械能更高。`}}return {value:'—',desc:app.explain}}
+function updateAppOutput(app){const x=calcApp(app);$('#appOutput').textContent=x.value;$('#appInterpretation').textContent=x.desc}
+function drawAppPlot(app){const svg=$('#appPlot');if(!svg)return;const W=560,H=180,pad=31;svg.innerHTML='';const create=(tag,attrs,parent=svg)=>{const el=document.createElementNS('http://www.w3.org/2000/svg',tag);Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,v));parent.appendChild(el);return el};for(let i=0;i<5;i++){const y=pad+i*(H-2*pad)/4;create('line',{x1:pad,y1:y,x2:W-pad,y2:y,stroke:'#e9eff5','stroke-width':1})}create('line',{x1:pad,y1:pad,x2:pad,y2:H-pad,stroke:'#b9c8d8'});create('line',{x1:pad,y1:H-pad,x2:W-pad,y2:H-pad,stroke:'#b9c8d8'});const factor=app.factors[0],min=factor.min,max=factor.max,samples=50,key=app.id+':'+factor.name,cur=appFactors[key]??factor.value;let vals=[];for(let i=0;i<=samples;i++){const x=min+(max-min)*i/samples;appFactors[key]=x;vals.push(+calcApp(app).value.replace(/[^0-9.-]/g,''))}appFactors[key]=cur;let lo=Math.min(...vals),hi=Math.max(...vals);if(lo===hi){lo-=1;hi+=1}const points=vals.map((v,i)=>`${pad+i*(W-2*pad)/samples},${H-pad-(v-lo)/(hi-lo)*(H-2*pad)}`).join(' ');create('polyline',{points,fill:'none',stroke:'#3d83be','stroke-width':2.8,'stroke-linecap':'round','stroke-linejoin':'round'});const fval=calcApp(app).value,actual=+fval.replace(/[^0-9.-]/g,'');const xPos=pad+(cur-min)/(max-min)*(W-2*pad),yPos=H-pad-(actual-lo)/(hi-lo)*(H-2*pad);create('circle',{cx:xPos,cy:yPos,r:5,fill:'#8bd36b',stroke:'#fff','stroke-width':2});create('text',{x:pad,y:15,fill:'#7d91a7','font-size':10},svg).textContent='输出与首个参数的关系（其他参数按当前值固定）';create('text',{x:W-pad,y:H-8,'text-anchor':'end',fill:'#9aa8b6','font-size':9},svg).textContent=factor.name}
+function renderResearchTopics(){const host=$('#researchTopics');if(!host)return;host.innerHTML=topicDefs.map(t=>`<button class="topic-card ${researchTopic===t.name?'active':''}" data-topic="${escapeHTML(t.name)}"><small>研究主题</small><strong>${escapeHTML(t.name)}</strong><p>${escapeHTML(t.desc)}</p></button>`).join('');$$('[data-topic]').forEach(b=>b.onclick=()=>{researchTopic=b.dataset.topic;state.selectedResearchTopic=researchTopic;saveState();renderResearchTopics();if(!$('#researchObservation').value)$('#researchObservation').value=topicDefs.find(t=>t.name===researchTopic).phen})}
+function renderResearch(){renderResearchTopics();const saved=state.research[researchTopic]||{};$('#researchObservation').value=saved.observation||'';$('#researchQuestion').value=saved.question||'';$('#researchHypothesis').value=saved.hypothesis||'';$('#researchEvidence').value=saved.evidence||'';$('#researchReflection').value=saved.reflection||'';$('#researchCoach').style.display='none'}
+function saveResearch(){state.research[researchTopic]={observation:$('#researchObservation').value,question:$('#researchQuestion').value,hypothesis:$('#researchHypothesis').value,evidence:$('#researchEvidence').value,reflection:$('#researchReflection').value,updatedAt:Date.now()};state.selectedResearchTopic=researchTopic;saveState();notify('研究记录已保存到当前浏览器。')}
+async function challengeResearch(){const observation=$('#researchObservation').value,question=$('#researchQuestion').value,hypothesis=$('#researchHypothesis').value;if(!question.trim()||!hypothesis.trim())return notify('先写出一个研究问题和当前假设。');let reply='';if(state.aiEndpoint){try{const r=await fetch(state.aiEndpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({topic:researchTopic,explanation:`现象：${observation}\n问题：${question}\n假设：${hypothesis}`,level:4,mode:'research'})});if(!r.ok)throw new Error();const d=await r.json();reply=d.question||d.reply||''}catch(e){reply='';}}if(!reply){const challenges=[`你的假设可以被什么观察结果否定？请在实验开始前写下判据。`,`你是否把相关性当作因果关系？如果有另一个机制能产生同样结果，如何区分？`,`如果把你最关键的参数改变一个数量级，模型还会给出合理预测吗？`,`是否有一个你尚未控制的变量可以同时影响观察结果和假设中的机制？`,`你能否先写出一个最小模型，并说明它忽略了哪些物理过程？`];reply=challenges[(question.length+hypothesis.length)%challenges.length]}$('#researchCoach').style.display='block';$('#researchCoach').innerHTML='<b>对抗式追问</b><br/>'+escapeHTML(reply);state.research[researchTopic]={observation,question,hypothesis,evidence:$('#researchEvidence').value,reflection:$('#researchReflection').value,updatedAt:Date.now(),lastChallenge:reply};saveState()}
+async function loadSympy(){if(sympyLoading)return;sympyLoading=true;$('#sympyResult').style.display='block';$('#sympyResult').textContent='正在加载 Pyodide 运行环境（资源较大，需要网络）…';try{if(!window.loadPyodide){await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js';s.onload=resolve;s.onerror=reject;document.head.appendChild(s)})}sympy=await window.loadPyodide();await sympy.loadPackage('sympy');$('#sympyResult').className='feedback good';$('#sympyResult').textContent='SymPy 已加载，可以运行表达式。'}catch(e){$('#sympyResult').className='feedback warn';$('#sympyResult').textContent='加载失败。请确认网络连接，或稍后重试。';}finally{sympyLoading=false}}
+async function runSympy(){if(!sympy){await loadSympy();if(!sympy)return}const expr=$('#symbolicInput').value.trim();if(!expr)return;try{const code=`import sympy as sp\nx, y, z, t = sp.symbols('x y z t')\nresult = ${expr}\nstr(result)`;const result=await sympy.runPythonAsync(code);$('#sympyResult').className='feedback good';$('#sympyResult').textContent='SymPy 结果：'+result}catch(e){$('#sympyResult').className='feedback warn';$('#sympyResult').textContent='无法解析该表达式。请使用 SymPy 语法，例如 diff(x**2,x) 或 integrate(sin(x),x)。'}}
+function exportData(){const blob=new Blob([JSON.stringify({exportedAt:new Date().toISOString(),version:1,state},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='physics-cognition-engine-data.json';a.click();URL.revokeObjectURL(a.href);notify('学习数据 JSON 已导出。')}
+function importData(file){const r=new FileReader();r.onload=()=>{try{const obj=JSON.parse(r.result);const data=obj.state||obj;if(typeof data!=='object'||!data)throw new Error('invalid');state={...state,...data};saveState();renderTrail();renderReview();renderNodeDetail();renderGraph();notify('学习数据已导入并合并。')}catch(e){notify('文件不是可识别的学习数据 JSON。')}};r.readAsText(file)}
+const cognitionNodes={
+learn:{name:'学会与习得',color:'blue',icon:'Φ',group:'核心目标',description:'学会意味着能解释概念、指出条件并完成一次推理；习得意味着在没有原始提示时，仍能在新情境中提取并使用模型。两者需要反复往返，而不是一次阅读后自动发生。',prompt:'暂时不看上方的说明。请用自己的话解释这个知识点，并写出一个适用条件和一个可能失效的情境。',placeholder:'我理解……，因为……；模型成立需要……；当……时可能失效。',hint:'完整解释应同时包含结论、因果机制和边界条件，而不只是给出定义。',next:'feedback'},
+experience:{name:'经验',color:'teal',icon:'◉',group:'认知输入',description:'经验不是单纯看过一个例子，而是把真实现象、实验数据或具体情境带进模型。经验提供模型需要解释的材料。',prompt:'围绕当前知识点，写下一个你亲眼观察过、做过或能明确想象的现象。先描述事实，不急于解释。',placeholder:'我观察到……在……条件下，出现了……',hint:'可写测量值、变化方向、反常现象或一个生活例子。区分“看到的”与“猜测的”。',next:'cognition'},
+cognition:{name:'认知',color:'teal',icon:'⌁',group:'建模',description:'把现象组织成变量、关系和假设。一个有用的模型必须说明什么因素重要、哪些暂时忽略，以及变量通过什么机制发生联系。',prompt:'写出本知识点的最小因果链：条件 / 输入变量 → 物理机制或规律 → 可观察结果。',placeholder:'当……改变时，因为……，所以……；这一判断假定……',hint:'尽量写出“因为”，而不只写公式或结论。',next:'understand'},
+review:{name:'复习',color:'yellow',icon:'↶',group:'过去：温故知新',description:'复习的关键是先从记忆中提取模型，再对照资料找出缺口。先看答案再觉得熟悉，不等于能独立调用。',prompt:'先不查看知识地图，凭记忆写出核心关系、一个适用条件，以及一个容易混淆的概念。',placeholder:'核心关系是……；它成立需要……；容易混淆的是……',hint:'记不完整也可以。记录“提取失败的位置”，随后再核对并修正。',next:'memory'},
+trial:{name:'试错',color:'red',icon:'↗',group:'检验边界',description:'试错不是随机碰撞，而是设计能区分模型真伪的测试。通过极端条件、反例或参数变化，寻找当前解释何时失效。',prompt:'对当前模型提出一个可能推翻它的情况，或把一个关键参数改变到极端。预测会发生什么，为什么？',placeholder:'如果……趋近于……，模型预测……；若观测不是这样，可能说明……',hint:'好的测试不仅能支持模型，也能让模型有机会被否定。',next:'feedback'},
+application:{name:'应用',color:'yellow',icon:'↗',group:'迁移',description:'应用要求把抽象关系映射到真实系统，明确系统边界、估计参数，并承认理想模型与现实之间的误差。',prompt:'把当前知识点用于一个新的现实情境。指出对象、可测量变量，以及模型能帮助你预测什么。',placeholder:'情境是……；我把……当作系统；用……模型预测……',hint:'不要只举例子，尽量说清模型实际产生了哪个预测。',next:'up'},
+feedback:{name:'反馈',color:'red',icon:'↔',group:'预测与证据',description:'反馈来自预测与结果的比较。误差可能来自计算、测量、遗漏变量或模型边界，不能一看到差异就立刻归咎于“粗心”。',prompt:'写出模型原先预测什么、证据或计算结果是什么、两者差异可能来自哪里。',placeholder:'我原先预测……；实际/计算得到……；差异可能来自……；下一步检查……',hint:'有真实数据就写数据；没有数据时可以用可计算结果或明确标注“待验证”的预测。',next:'practice'},
+practice:{name:'练习',color:'green',icon:'⟳',group:'调用与巩固',description:'练习要训练的是在不同表面情境下识别同一个深层模型，也要辨别相似情境中哪些条件已经改变。',prompt:'设计一个与熟悉例题表面不同、但可能使用同一模型的小题。写出第一步会判断什么。',placeholder:'新情境……；我先判断……；如果……条件不满足，就不能直接用……',hint:'比连续刷同一题型更重要的是辨别何时适用、何时不适用。',next:'skill'},
+skill:{name:'技能',color:'green',icon:'◇',group:'可执行程序',description:'技能是可稳定执行的程序：知道先检查什么、接着做什么、如何发现错误。速度不是唯一标准，可靠性和边界意识同样重要。',prompt:'把解决这类问题的过程写成一份可重复使用的检查清单，最多 4 步。',placeholder:'1. 先确认……\n2. 再建立……\n3. 计算/验证……\n4. 检查……',hint:'流程应帮助你减少遗漏，但不能替代理解每一步为什么合理。',next:'application'},
+memory:{name:'记忆',color:'pink',icon:'●',group:'可提取线索',description:'这里把记忆理解为可被线索唤起、可用于推理的知识，不把熟悉感当成掌握。关键是能从问题或情境重新提取模型。',prompt:'用一句话写下这个知识点的“提取线索”：遇到什么现象时，你应该想到它？',placeholder:'当题目出现……，并且……条件成立时，我应该想到……',hint:'线索最好来自问题结构、变量关系或边界条件，而不是只靠章节标题。',next:'review'},
+understand:{name:'理解',color:'blue',icon:'≈',group:'机制解释',description:'理解不仅是复述术语，而是能解释结论为何成立、推导依赖哪些前提，并能区分相近概念。',prompt:'假设你在向一个刚接触物理的人解释：这个结论为什么成立？请少用术语，多讲因果。',placeholder:'关键不是只记住……，而是因为……；当……时，这个解释不再成立。',hint:'试着给出类比，但同时说明类比在哪些地方不准确。',next:'trial'},
+up:{name:'升维',color:'blue',icon:'↑',group:'抽象与迁移',description:'升维是从一个具体案例中抽取更一般的结构，再把结构迁移到新的尺度、对象或学科。它不是单纯学习更难的内容。',prompt:'这个模型还能迁移到哪里？找出新旧情境中保持不变的结构，以及必须修改的部分。',placeholder:'共同结构是……；新情境改变了……；所以需要把原模型中的……改为……',hint:'可从运动到电路、从经典到量子、从单个粒子到集体系统寻找结构对应。',next:'settle'},
+settle:{name:'沉淀',color:'green',icon:'⬡',group:'长期整合',description:'沉淀意味着模型在一段时间后仍能被调用，并与已有知识形成连接。它需要间隔后的再次提取与不同情境中的稳定迁移。',prompt:'用三行总结：当前模型解释了什么、依赖什么条件、下次遇到什么现象时可以调用它。',placeholder:'解释对象：……\n适用条件：……\n可迁移到：……',hint:'之后可以回到“过去”模式重新提取，检查这份总结是否仍然准确。',next:'experience'}
+};
+const cognitionOrder=['experience','cognition','understand','learn','trial','feedback','practice','skill','application','review','memory','settle','up'];
+function activeCognitionRecord(){const k=state.cognition.knowledgeId||state.selectedNode||'motion';if(!state.cognition.records[k])state.cognition.records[k]={done:{},notes:{},lastUpdated:null};const r=state.cognition.records[k];r.done=r.done||{};r.notes=r.notes||{};return r}
+function cognitionTimeText(){const t=state.cognition.timeline||'现在';return t==='过去'?'温故知新：先尝试独立提取，再用资料找出遗漏。':t==='未来'?'未雨绸缪：先预测模型将如何迁移，再安排一个可以验证它的新情境。':'活学活用：对当前知识点做一次具体建模、预测或验证。'}
+function cognitionProgressForRecord(rec){const groups=[['experience','cognition','understand','learn'],['review','memory'],['practice','skill'],['application','up'],['trial','feedback'],['settle']];const n=groups.filter(g=>g.some(id=>rec.done[id])).length;return Math.round(n/groups.length*100)}
+function cognitionCausalForRecord(rec){const groups=[['cognition','understand','learn'],['trial'],['feedback'],['application','up']];return Math.round(groups.filter(g=>g.some(id=>rec.done[id])).length/groups.length*100)}
+function renderCognition(){if(!$('#cognitionWorkbench'))return;const kid=state.cognition.knowledgeId||state.selectedNode||'motion';if(!nodes.some(n=>n.id===kid))state.cognition.knowledgeId=nodes[0].id;const n=findNode(state.cognition.knowledgeId);const rec=activeCognitionRecord();const selected=state.cognition.selected||'experience';const item=cognitionNodes[selected]||cognitionNodes.experience;const doneCount=Object.values(rec.done).filter(Boolean).length;const already=!!rec.done[selected];const content=rec.notes[selected]||'';const nextId=item.next;const nextItem=cognitionNodes[nextId];
+ $('#cogDonePill').textContent=`本知识点：${doneCount} / ${Object.keys(cognitionNodes).length}`;
+ $$('#cognition-map [data-cognition]').forEach(g=>{g.classList.toggle('selected',g.dataset.cognition===selected);g.classList.toggle('completed',!!rec.done[g.dataset.cognition]);});
+ const options=nodes.map(x=>`<option value="${x.id}" ${x.id===n.id?'selected':''}>${escapeHTML(x.name)} · ${escapeHTML(x.group)}</option>`).join('');
+ $('#cognitionWorkbench').innerHTML=`<div class="panel-head"><div><h3>认知操作台</h3><p>每条记录都与一个知识点绑定，可反复修订。</p></div><span class="pill ${already?'green':''}">${already?'已记录':'未记录'}</span></div><label class="form-label" for="cogKnowledgeSelect">当前知识点（不受层级限制）</label><select class="field" id="cogKnowledgeSelect">${options}</select><div class="cog-node-kicker" style="margin-top:18px"><div class="cog-node-icon">${item.icon}</div><span class="pill">${escapeHTML(item.group)}</span></div><h2 class="cog-work-title">${escapeHTML(item.name)}</h2><p class="cog-work-description">${escapeHTML(item.description)}</p><div class="cog-question"><strong>${escapeHTML(item.prompt.replaceAll('当前知识点',n.name).replaceAll('这个知识点',n.name))}</strong><p>${escapeHTML(item.hint)}<br/><br/>${escapeHTML(cognitionTimeText())}</p></div><label class="cog-task-label" for="cogDraft">写下你的模型、预测或反思</label><textarea class="cog-textarea" id="cogDraft" placeholder="${escapeHTML(item.placeholder)}">${escapeHTML(content)}</textarea><p class="cog-sentence">参考当前知识点：${escapeHTML(n.description)}。适用条件：${escapeHTML((n.conditions||[]).join('；'))}</p><div class="cog-actions"><button class="btn btn-primary" id="cogSaveStep">${already?'更新这条记录':'保存并标记本环节'}</button><button class="btn btn-outline" id="cogShowNext">查看建议下一步 →</button></div>${already?`<div class="cog-done-note">本环节已有记录。你可以继续修订，不要求一次写对。最近记录：${new Date(rec.done[selected]).toLocaleString()}。</div>`:''}<div class="cog-status ${already?'done':''}"><span class="status-dot"></span><span>${already?'这一步已被调用并留下记录':'留下可检查的思考痕迹后，才会计入模型覆盖情况'}</span></div><div class="subpanel"><h4>本知识点的循环轨迹</h4><div class="cog-steps-list">${cognitionOrder.map((id,i)=>{const it=cognitionNodes[id],isDone=!!rec.done[id],isActive=id===selected;return `<button class="cog-step-row ${isDone?'done':''} ${isActive?'active':''}" data-cognition="${id}"><span class="cog-step-index">${isDone?'✓':String(i+1).padStart(2,'0')}</span><span><strong>${escapeHTML(it.name)}</strong><small>${isDone?'已留下记录':escapeHTML(it.group)}</small></span></button>`}).join('')}</div></div>`;
+ $$('#cognition-map [data-cognition]').forEach(g=>{const id=g.dataset.cognition;g.classList.toggle('selected',id===selected);g.classList.toggle('completed',!!rec.done[id]);g.setAttribute('aria-pressed',id===selected?'true':'false');});
+ $('#cogKnowledgeSelect').onchange=e=>{state.cognition.knowledgeId=e.target.value;saveState();renderCognition()};
+ $('#cogDraft').onchange=e=>{const r=activeCognitionRecord();r.notes[state.cognition.selected]=e.target.value;saveState()};
+ $('#cogSaveStep').onclick=()=>{const text=$('#cogDraft').value.trim();if(text.length<4)return notify('请至少写下一句有意义的描述，再保存这一步。');const r=activeCognitionRecord();r.notes[selected]=text;r.done[selected]=Date.now();r.lastUpdated=Date.now();state.cognition.lastUpdated=Date.now();const mp=cognitionProgressForRecord(r),cc=cognitionCausalForRecord(r);state.modelProgress[n.id]=Math.max(state.modelProgress[n.id]||0,mp);state.causalClarity[n.id]=Math.max(state.causalClarity[n.id]||0,cc);state.trail.unshift({id:n.id,name:n.name,action:`学习机制：${item.name}`,at:Date.now()});state.trail=state.trail.slice(0,80);saveState();renderCognition();renderTrail();notify(`已保存「${n.name} · ${item.name}」的认知记录。`);if(state.sound)playTone()};
+ $('#cogShowNext').onclick=()=>{state.cognition.selected=nextId;saveState();renderCognition()};
+ const mp=cognitionProgressForRecord(rec),cc=cognitionCausalForRecord(rec);$('#cogModelCompleteness').textContent=doneCount?mp+'%':'尚未记录';$('#cogCausalClarity').textContent=doneCount?cc+'%':'尚未记录';$('#cogLastUpdate').textContent=rec.lastUpdated?new Date(rec.lastUpdated).toLocaleDateString():'尚未记录';$('#cogLastUpdateText').textContent=rec.lastUpdated?`上次更新于 ${new Date(rec.lastUpdated).toLocaleString()}。请继续核对预测、证据和适用条件。`:'写下预测与反馈之间的差异，记录模型如何变化。';
+ $$('#view-cognition [data-cognition]').forEach(el=>{el.onclick=()=>{state.cognition.selected=el.dataset.cognition;saveState();renderCognition()};el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();state.cognition.selected=el.dataset.cognition;saveState();renderCognition()}}});
+ $$('[data-cog-time]').forEach(b=>{b.classList.toggle('active',b.dataset.cogTime===(state.cognition.timeline||'现在'));b.onclick=()=>{state.cognition.timeline=b.dataset.cogTime;saveState();renderCognition()}});
+ const focusId=selected;const stepButtons=$$('#cognitionWorkbench [data-cognition]');stepButtons.forEach(b=>b.onclick=()=>{state.cognition.selected=b.dataset.cognition;saveState();renderCognition()});
+}
+function init(){refreshStats();renderTrail();renderReview();renderMapFilters();renderNodeDetail();renderLearn();renderPractice();renderApplication();renderResearchTopics();renderCognition();$('#aiEndpoint').value=state.aiEndpoint||'';$('#soundToggle').textContent=state.sound?'♫':'♩';$('#soundToggle').title=state.sound?'完成音效已开启':'完成音效已关闭';
+$('#navigation').addEventListener('click',e=>{const b=e.target.closest('[data-view]');if(b)go(b.dataset.view)});document.body.addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b){e.preventDefault();go(b.dataset.go)}});$('#mobileToggle').onclick=()=>$('#sidebar').classList.toggle('open');$('#settingsShortcut').onclick=()=>go('settings');$('#soundToggle').onclick=()=>{state.sound=!state.sound;saveState();$('#soundToggle').textContent=state.sound?'♫':'♩';notify(state.sound?'完成音效已开启。':'完成音效已关闭。');if(state.sound)playTone()};$('#globalSearch').addEventListener('input',e=>{if(e.target.value.trim()){go('map');$('#mapSearch').value=e.target.value;renderGraph()} });$('#globalSearch').addEventListener('keydown',e=>{if(e.key==='Enter'){go('map');$('#mapSearch').value=e.target.value;renderGraph()}});document.addEventListener('keydown',e=>{if(e.key==='/'&&!['INPUT','TEXTAREA'].includes(document.activeElement.tagName)){e.preventDefault();$('#globalSearch').focus()}if(e.key==='Escape')$('#sidebar').classList.remove('open')});$('#mapSearch').addEventListener('input',renderGraph);$('#groupFilter').addEventListener('change',renderGraph);$('#levelFilter').addEventListener('change',renderGraph);$('#resetGraph').onclick=()=>{$('#mapSearch').value='';$('#groupFilter').value='all';$('#levelFilter').value='all';renderGraph()};$('#learnLevelChips').addEventListener('click',e=>{const b=e.target.closest('[data-learn-level]');if(!b)return;go('map');$('#levelFilter').value=b.dataset.learnLevel;renderGraph()});$('#saveResearch').onclick=saveResearch;$('#researchChallenge').onclick=challengeResearch;$('#loadSympy').onclick=loadSympy;$('#runSympy').onclick=runSympy;$('#exportData').onclick=exportData;$('#importFile').onchange=e=>{const f=e.target.files[0];if(f)importData(f)};$('#clearData').onclick=()=>{if(!confirm('确定清除当前浏览器中物理认知引擎的全部本地数据？此操作不可撤销。'))return;localStorage.removeItem(STORE_KEY);state=structuredClone(defaults);selectedNode=findNode('motion');learnStep=0;currentAppIndex=0;saveState();renderTrail();renderReview();renderNodeDetail();renderLearn();renderApplication();renderResearch();renderCognition();notify('本地数据已清除。')};$('#saveAiEndpoint').onclick=()=>{state.aiEndpoint=$('#aiEndpoint').value.trim();saveState();notify('AI 接口设置已保存。请确保服务端支持 CORS，且不在公开前端暴露 API 密钥。')};$('#clearAiEndpoint').onclick=()=>{$('#aiEndpoint').value='';state.aiEndpoint='';saveState();notify('已清除 AI 接口。')};$('#researchObservation').oninput=$('#researchQuestion').oninput=$('#researchHypothesis').oninput=$('#researchEvidence').oninput=$('#researchReflection').oninput=()=>{};$('#practiceSketch')&&setupCanvas($('#practiceSketch'));$('#clearPracticeSketch').onclick=()=>clearCanvas($('#practiceSketch'));document.querySelectorAll('[data-go]').forEach(b=>{});window.addEventListener('resize',()=>{if(activeView==='map')renderGraph()});}
+init();
+})();
+</script>
+</body>
+</html>
