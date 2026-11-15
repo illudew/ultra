@@ -1,0 +1,3 @@
+field_name,meaning,unit,type,allowed_values,missing_rule,source_or_transformation,quality_check
+length_m,示例：支点到摆球质心的距离,m,float,正值,缺失不得填0,教学输入或测量记录,核对长度定义与单位
+elapsed_s,示例：完整20周期用时,s,float,正值,缺失单列标记,教学输入或计时原始记录,确认周期计数和开始结束定义
